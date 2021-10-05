@@ -4,9 +4,9 @@ import 'package:settings_new_look/utilities/app_components.dart';
 import 'package:settings_new_look/utilities/app_enums.dart';
 import 'package:settings_new_look/utilities/app_helper_methods.dart';
 import 'package:settings_new_look/utilities/app_strings.dart';
-import 'package:settings_new_look/views/settings_page/settings_cubit/settings_cubit.dart';
+import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_cubit.dart';
 
-AppBar buildAppBar(BuildContext context) => AppBar(
+AppBar buildAppBarSection(BuildContext context) => AppBar(
       centerTitle: true,
       leading: IconButton(
         icon: Icon(Icons.close),
@@ -30,7 +30,7 @@ AppBar buildAppBar(BuildContext context) => AppBar(
       ],
     );
 
-class CustomTabBar extends StatelessWidget {
+class CustomTabBarSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),

@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:settings_new_look/views/settings_page/settings_cubit/settings_cubit.dart';
-import 'package:settings_new_look/views/settings_page/settings_cubit/settings_states.dart';
-import 'package:settings_new_look/views/settings_page/settings_sections.dart';
-
-import 'settings_sections.dart';
+import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_cubit.dart';
+import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_states.dart';
+import 'package:settings_new_look/views/settings_module/settings_views/settings_app_and_tab_bar.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -16,12 +14,12 @@ class SettingsPage extends StatelessWidget {
           builder: (context, state) => DefaultTabController(
             length: 2,
             child: Scaffold(
-              appBar: buildAppBar(context),
+              appBar: buildAppBarSection(context),
               body: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 32),
                 child: Column(
                   children: [
-                    CustomTabBar(),
+                    CustomTabBarSection(),
                     Expanded(
                       child: TabBarView(
                         physics: NeverScrollableScrollPhysics(),

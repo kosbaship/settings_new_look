@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:settings_new_look/views/settings_page/settings_cubit/settings_states.dart';
+import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_states.dart';
 
 class SettingsCubit extends Cubit<SettingsStates> {
   SettingsCubit() : super(SettingsInitialState());
