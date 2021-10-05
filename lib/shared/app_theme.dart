@@ -5,18 +5,28 @@ import 'app_strings.dart';
 
 ThemeData kAppTheme() => ThemeData(
       appBarTheme: AppBarTheme(
-        color: kDefaultColor,
+        color: kAppDefaultColor,
       ),
       textTheme: TextTheme(
         button: TextStyle(
           fontSize: 16,
-          color: kWhiteColor,
+          color: kAppWhiteColor,
           fontFamily: KCairoRegularFont,
         ),
         headline1: TextStyle(
           fontSize: 20,
-          color: kWhiteColor,
+          color: kAppWhiteColor,
           fontFamily: KCairoRegularFont,
+        ),
+        headline2: TextStyle(
+          fontSize: 16,
+          color: kAppActiveColor,
+          fontFamily: KSimiBoldFont,
+        ),
+        headline3: TextStyle(
+          fontSize: 16,
+          color: kAppGreyColor,
+          fontFamily: KSimiBoldFont,
         ),
       ),
     );

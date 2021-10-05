@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:settings_new_look/shared/app_compponents.dart';
 import 'package:settings_new_look/shared/app_enums.dart';
 import 'package:settings_new_look/shared/app_helper_methods.dart';
 import 'package:settings_new_look/shared/app_strings.dart';
@@ -9,7 +10,7 @@ AppBar buildAppBar(BuildContext context) => AppBar(
         icon: Icon(Icons.close),
         onPressed: () => Navigator.pop(context),
       ),
-      title: Text(
+      title: OneLineText(
         kSettingsScreenTitle,
         style: Theme.of(context).textTheme.headline1,
       ),
@@ -19,8 +20,8 @@ AppBar buildAppBar(BuildContext context) => AppBar(
             color: ToastColors.WARNING,
             massage: kToastWarning,
           ),
-          child: Text(
-            kSave,
+          child: OneLineText(
+            kSave.toUpperCase(),
             style: Theme.of(context).textTheme.button,
           ),
         )
