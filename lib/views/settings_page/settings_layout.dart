@@ -21,21 +21,7 @@ class SettingsPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 32),
                 child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: TabBar(
-                        onTap: (index) =>
-                            SettingsCubit.get(context).changeIndex(index),
-                        tabs: [
-                          SettingsCubit.get(context).tabBarIndex == 0
-                              ? buildActiveClinicTab(context)
-                              : buildUnActiveClinicTab(context),
-                          SettingsCubit.get(context).tabBarIndex == 1
-                              ? buildActiveCallTab(context)
-                              : buildUnActiveCallTab(context),
-                        ],
-                      ),
-                    ),
+                    CustomTabBar(),
                     Expanded(
                       child: TabBarView(
                         physics: NeverScrollableScrollPhysics(),
