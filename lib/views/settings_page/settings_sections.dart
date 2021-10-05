@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:settings_new_look/utilities/app_compponents.dart';
+import 'package:settings_new_look/utilities/app_components.dart';
 import 'package:settings_new_look/utilities/app_enums.dart';
 import 'package:settings_new_look/utilities/app_helper_methods.dart';
 import 'package:settings_new_look/utilities/app_strings.dart';
