@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:settings_new_look/shared/app_compponents.dart';
 import 'package:settings_new_look/shared/app_enums.dart';
 import 'package:settings_new_look/shared/app_helper_methods.dart';
@@ -18,7 +19,7 @@ AppBar buildAppBar(BuildContext context) => AppBar(
         TextButton(
           onPressed: () => showToast(
             color: ToastColors.WARNING,
-            massage: kToastWarning,
+            massage: kToastWarningText,
           ),
           child: OneLineText(
             kSave.toUpperCase(),
@@ -26,4 +27,72 @@ AppBar buildAppBar(BuildContext context) => AppBar(
           ),
         )
       ],
+    );
+
+Widget buildActiveClinicTab(BuildContext context) => Tab(
+      child: Row(
+        children: [
+          Spacer(),
+          SvgPicture.asset(kActiveClinicMedicalSVG),
+          SizedBox(
+            width: 8.0,
+          ),
+          OneLineText(
+            kClinicWorkingHours,
+            style: Theme.of(context).textTheme.headline2,
+          ),
+          Spacer(),
+        ],
+      ),
+    );
+
+Widget buildActiveCallTab(BuildContext context) => Tab(
+      child: Row(
+        children: [
+          Spacer(),
+          SvgPicture.asset(kActivePhoneSVG),
+          SizedBox(
+            width: 8.0,
+          ),
+          OneLineText(
+            kCallTimings,
+            style: Theme.of(context).textTheme.headline2,
+          ),
+          Spacer(),
+        ],
+      ),
+    );
+
+Widget buildUnActiveClinicTab(BuildContext context) => Tab(
+      child: Row(
+        children: [
+          Spacer(),
+          SvgPicture.asset(kUnActiveClinicMedicalSVG),
+          SizedBox(
+            width: 8.0,
+          ),
+          OneLineText(
+            kClinicWorkingHours,
+            style: Theme.of(context).textTheme.headline3,
+          ),
+          Spacer(),
+        ],
+      ),
+    );
+
+Widget buildUnActiveCallTab(BuildContext context) => Tab(
+      child: Row(
+        children: [
+          Spacer(),
+          SvgPicture.asset(kUnActivePhoneSVG),
+          SizedBox(
+            width: 8.0,
+          ),
+          OneLineText(
+            kCallTimings,
+            style: Theme.of(context).textTheme.headline3,
+          ),
+          Spacer(),
+        ],
+      ),
     );

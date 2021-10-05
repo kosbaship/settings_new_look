@@ -25,7 +25,7 @@ ThemeData kAppTheme() => ThemeData(
         ),
         headline3: TextStyle(
           fontSize: 16,
-          color: kAppGreyColor,
+          color: kAppUnActiveColor,
           fontFamily: KSimiBoldFont,
         ),
       ),
