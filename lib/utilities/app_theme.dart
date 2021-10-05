@@ -28,5 +28,10 @@ ThemeData kAppTheme() => ThemeData(
           color: kAppUnActiveColor,
           fontFamily: KSimiBoldFont,
         ),
+        headline4: TextStyle(
+          fontSize: 14,
+          color: kAppUnActiveColor,
+          fontFamily: KPoppinsMediumFont,
+        ),
       ),
     );

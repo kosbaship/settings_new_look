@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_cubit.dart';
 import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_states.dart';
 import 'package:settings_new_look/views/settings_module/settings_views/settings_app_and_tab_bar.dart';
+import 'package:settings_new_look/views/settings_module/settings_views/settings_clinic_working_hours.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -24,11 +25,7 @@ class SettingsPage extends StatelessWidget {
                       child: TabBarView(
                         physics: NeverScrollableScrollPhysics(),
                         children: [
-                          Icon(
-                            Icons.directions_car,
-                            color: Colors.red,
-                            size: 45,
-                          ),
+                          ClinicWorkingHours(),
                           Icon(
                             Icons.directions_bike,
                             color: Colors.red,
