@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:settings_new_look/utilities/app_colors.dart';
@@ -6,24 +5,9 @@ import 'package:settings_new_look/utilities/app_components.dart';
 import 'package:settings_new_look/utilities/app_strings.dart';
 import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_cubit.dart';
 
-class ClinicWorkingHours extends StatelessWidget {
+class ExaminationAndConfirmScheduleSection extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => Form(
-        key: SettingsCubit.get(context).formKey,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 12.0),
-          child: Container(
-            child: Column(
-              children: [
-                buildExaminationAndConfirmScheduleSection(context),
-              ],
-            ),
-          ),
-        ),
-      );
-
-  Widget buildExaminationAndConfirmScheduleSection(BuildContext context) =>
-      Column(
+  Widget build(BuildContext context) => Column(
         children: [
           Row(
             children: [

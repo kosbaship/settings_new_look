@@ -4,28 +4,7 @@ import 'package:settings_new_look/utilities/app_components.dart';
 import 'package:settings_new_look/utilities/app_strings.dart';
 import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_cubit.dart';
 
-AppBar buildAppBarSection(BuildContext context) => AppBar(
-      centerTitle: true,
-      leading: IconButton(
-        icon: Icon(Icons.close),
-        onPressed: () => Navigator.pop(context),
-      ),
-      title: OneLineText(
-        kSettingsScreenTitle,
-        style: Theme.of(context).textTheme.headline1,
-      ),
-      actions: [
-        TextButton(
-          onPressed: () => SettingsCubit.get(context).saveAllTheSettings(),
-          child: OneLineText(
-            kSave.toUpperCase(),
-            style: Theme.of(context).textTheme.button,
-          ),
-        )
-      ],
-    );
-
-class CustomTabBarSection extends StatelessWidget {
+class SettingsCustomTabBarSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),

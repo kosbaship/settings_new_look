@@ -4,8 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:settings_new_look/utilities/app_colors.dart';
 import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_cubit.dart';
 import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_states.dart';
-import 'package:settings_new_look/views/settings_module/settings_views/settings_app_and_tab_bar.dart';
-import 'package:settings_new_look/views/settings_module/settings_views/settings_clinic_working_hours.dart';
+import 'package:settings_new_look/views/settings_module/settings_views/settings_app_and_tab_bar/settings_app_bar_section.dart';
+import 'package:settings_new_look/views/settings_module/settings_views/settings_app_and_tab_bar/settings_tab_bar_section.dart';
+import 'package:settings_new_look/views/settings_module/settings_views/settings_clinic_working_hours/settings_clinic_working_hours_layout.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -22,7 +23,7 @@ class SettingsPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 32),
                 child: Column(
                   children: [
-                    CustomTabBarSection(),
+                    SettingsCustomTabBarSection(),
                     Expanded(
                       child: TabBarView(
                         physics: NeverScrollableScrollPhysics(),
