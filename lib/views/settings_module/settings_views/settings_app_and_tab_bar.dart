@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:settings_new_look/utilities/app_components.dart';
-import 'package:settings_new_look/utilities/app_enums.dart';
-import 'package:settings_new_look/utilities/app_helper_methods.dart';
 import 'package:settings_new_look/utilities/app_strings.dart';
 import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_cubit.dart';
 
@@ -18,10 +16,7 @@ AppBar buildAppBarSection(BuildContext context) => AppBar(
       ),
       actions: [
         TextButton(
-          onPressed: () => showToast(
-            color: ToastColors.WARNING,
-            massage: kToastWarningText,
-          ),
+          onPressed: () => SettingsCubit.get(context).saveAllTheSettings(),
           child: OneLineText(
             kSave.toUpperCase(),
             style: Theme.of(context).textTheme.button,

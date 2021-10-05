@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:settings_new_look/utilities/app_strings.dart';
 import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_states.dart';
@@ -8,20 +9,35 @@ class SettingsCubit extends Cubit<SettingsStates> {
   static SettingsCubit get(context) => BlocProvider.of(context);
 
   int tabBarIndex = 0;
+
   changeTabBarIndex(index) {
     this.tabBarIndex = index;
     emit(SettingsChangeTabBarIndexState());
   }
 
   String examinationDropdownValue = kExaminationDropdownInitialValue;
+
   changeExaminationDropdownValue(examinationDropdownValue) {
     this.examinationDropdownValue = examinationDropdownValue;
     emit(SettingsChangeExaminationTypeState());
   }
 
   String confirmationScheduleValue = kConfirmationScheduleDropdownInitialValue;
+
   changeConfirmationScheduleValue(confirmationScheduleValue) {
     this.confirmationScheduleValue = confirmationScheduleValue;
     emit(SettingsConfirmationScheduleTypeState());
+  }
+
+  final formKey = GlobalKey<FormState>();
+  final examinationPriceController = TextEditingController();
+
+  _checkExaminationPriceTextFieldValidation() =>
+      this.formKey.currentState.validate();
+
+  saveAllTheSettings() {
+    if (this._checkExaminationPriceTextFieldValidation()) {
+      print('Saving Data and show loading Bar');
+    }
   }
 }

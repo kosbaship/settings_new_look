@@ -47,3 +47,27 @@ class CustomDropDownButton extends StatelessWidget {
         ),
       );
 }
+
+class CustomTextFormField extends StatelessWidget {
+  final TextEditingController controller;
+  final String hintText;
+  final String Function(String) validator;
+
+  CustomTextFormField(
+      {@required this.controller,
+      @required this.hintText,
+      @required this.validator});
+
+  @override
+  Widget build(BuildContext context) => TextFormField(
+        controller: this.controller,
+        keyboardType: TextInputType.number,
+        textAlign: TextAlign.center,
+        decoration: InputDecoration(
+          contentPadding: EdgeInsets.zero,
+          hintText: this.hintText,
+          hintStyle: Theme.of(context).textTheme.headline5,
+        ),
+        validator: this.validator,
+      );
+}

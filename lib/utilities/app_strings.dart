@@ -25,3 +25,4 @@ const String kUnActiveClinicMedicalSVG = 'assets/grey_clinic_medical.svg';
 const String kActivePhoneSVG = 'assets/blue_phone.svg';
 const String kUnActivePhoneSVG = 'assets/grey_phone.svg';
 const String kBlackDownArrowSVG = 'assets/black_down_arrow.svg';
+const String kFeesSVG = 'assets/fees.svg';
