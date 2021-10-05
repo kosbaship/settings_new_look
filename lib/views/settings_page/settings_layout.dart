@@ -11,7 +11,7 @@ class SettingsPage extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32),
           child: Container(
-            color: kGreenColor,
+            color: kToastSuccess,
           ),
         ),
       );

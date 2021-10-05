@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:settings_new_look/shared/app_enums.dart';
+import 'package:settings_new_look/shared/app_helper_methods.dart';
 import 'package:settings_new_look/shared/app_strings.dart';
 
 AppBar buildAppBar(BuildContext context) => AppBar(
@@ -13,7 +15,10 @@ AppBar buildAppBar(BuildContext context) => AppBar(
       ),
       actions: [
         TextButton(
-          onPressed: () {},
+          onPressed: () => showToast(
+            color: ToastColors.WARNING,
+            massage: kToastWarning,
+          ),
           child: Text(
             kSave,
             style: Theme.of(context).textTheme.button,
