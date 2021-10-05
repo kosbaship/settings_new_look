@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:settings_new_look/utilities/app_strings.dart';
 import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_states.dart';
 
 class SettingsCubit extends Cubit<SettingsStates> {
@@ -7,8 +8,20 @@ class SettingsCubit extends Cubit<SettingsStates> {
   static SettingsCubit get(context) => BlocProvider.of(context);
 
   int tabBarIndex = 0;
-  changeIndex(index) {
-    tabBarIndex = index;
+  changeTabBarIndex(index) {
+    this.tabBarIndex = index;
     emit(SettingsChangeTabBarIndexState());
+  }
+
+  String examinationDropdownValue = kExaminationDropdownInitialValue;
+  changeExaminationDropdownValue(examinationDropdownValue) {
+    this.examinationDropdownValue = examinationDropdownValue;
+    emit(SettingsChangeExaminationTypeState());
+  }
+
+  String confirmationScheduleValue = kConfirmationScheduleDropdownInitialValue;
+  changeConfirmationScheduleValue(confirmationScheduleValue) {
+    this.confirmationScheduleValue = confirmationScheduleValue;
+    emit(SettingsConfirmationScheduleTypeState());
   }
 }

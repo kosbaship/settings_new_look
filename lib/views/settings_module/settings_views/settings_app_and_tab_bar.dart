@@ -35,7 +35,7 @@ class CustomTabBarSection extends StatelessWidget {
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: TabBar(
-          onTap: (index) => SettingsCubit.get(context).changeIndex(index),
+          onTap: (index) => SettingsCubit.get(context).changeTabBarIndex(index),
           tabs: [
             SettingsCubit.get(context).tabBarIndex == 0
                 ? buildActiveClinicTab(context)

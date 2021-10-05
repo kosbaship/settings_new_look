@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:settings_new_look/utilities/app_colors.dart';
 import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_cubit.dart';
 import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_states.dart';
 import 'package:settings_new_look/views/settings_module/settings_views/settings_app_and_tab_bar.dart';
@@ -15,6 +16,7 @@ class SettingsPage extends StatelessWidget {
           builder: (context, state) => DefaultTabController(
             length: 2,
             child: Scaffold(
+              backgroundColor: kAppBackgroundColor,
               appBar: buildAppBarSection(context),
               body: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 32),
