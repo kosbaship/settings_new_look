@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:settings_new_look/utilities/app_colors.dart';
 
 class OneLineText extends StatelessWidget {
   final String text;
@@ -12,5 +13,37 @@ class OneLineText extends StatelessWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: style,
+      );
+}
+
+class CustomDropDownButton extends StatelessWidget {
+  final String value;
+  final List<DropdownMenuItem<String>> items;
+  final void Function(String) onChanged;
+
+  CustomDropDownButton(
+      {@required this.value, @required this.items, @required this.onChanged});
+
+  @override
+  Widget build(BuildContext context) => Expanded(
+        child: Center(
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            decoration: BoxDecoration(
+                color: kAppWhiteColor,
+                borderRadius: BorderRadius.circular(12.0),
+                border: Border.all(color: kAppBorderColor)),
+            child: DropdownButtonHideUnderline(
+              child: DropdownButton<String>(
+                value: this.value,
+                elevation: 12,
+                style: Theme.of(context).textTheme.headline5,
+                onChanged: this.onChanged,
+                items: this.items,
+              ),
+            ),
+          ),
+        ),
       );
 }
