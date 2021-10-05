@@ -5,6 +5,18 @@ const String KPoppinsRegularFont = 'Poppins-Regular';
 
 const String kSettingsScreenTitle = 'Schedule';
 const String kSave = 'Save';
+const String kFees = 'Fees';
+const String kWorkTime = 'WorkTime';
+
+const List<String> kDaysOfTheWeek = [
+  'Saturday',
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday'
+];
 
 const String kToastWarningText = 'Be Careful we still Developing';
 const String kClinicWorkingHours = 'Clinic working hour';

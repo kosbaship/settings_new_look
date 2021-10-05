@@ -91,7 +91,7 @@ class ExaminationAndConfirmScheduleSection extends StatelessWidget {
                       width: 16.0,
                     ),
                     OneLineText(
-                      'Fees',
+                      kFees,
                       style: Theme.of(context)
                           .textTheme
                           .headline5
@@ -110,8 +110,14 @@ class ExaminationAndConfirmScheduleSection extends StatelessWidget {
                         : null,
                   ),
                 ),
+                const SizedBox(
+                  height: 8.0,
+                )
               ],
             ),
+          ),
+          const SizedBox(
+            height: 20.0,
           )
         ],
       );
