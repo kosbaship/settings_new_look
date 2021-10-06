@@ -35,6 +35,22 @@ class SettingsCubit extends Cubit<SettingsStates> {
   _checkExaminationPriceTextFieldValidation() =>
       this.formKey.currentState.validate();
 
+  List<bool> expandedTilesValue = [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ];
+
+  changeExpandedTilesValue(expandedTilesValue, index) {
+    this.expandedTilesValue[index] = expandedTilesValue;
+    emit(SettingsChangeExpandedTilesValueState());
+  }
+
+  /// ======================================================
   saveAllTheSettings() {
     if (this._checkExaminationPriceTextFieldValidation()) {
       print('Saving Data and show loading Bar');

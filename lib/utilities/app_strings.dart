@@ -38,3 +38,7 @@ const String kActivePhoneSVG = 'assets/blue_phone.svg';
 const String kUnActivePhoneSVG = 'assets/grey_phone.svg';
 const String kBlackDownArrowSVG = 'assets/black_down_arrow.svg';
 const String kFeesSVG = 'assets/fees.svg';
+
+const String kActiveCupertinoSwitchSVG = 'assets/active_cupertino_switch.svg';
+const String kUnActiveCupertinoSwitchSVG =
+    'assets/un_active_cupertino_switch.svg';
