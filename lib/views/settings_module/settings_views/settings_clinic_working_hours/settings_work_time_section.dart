@@ -84,13 +84,93 @@ class WorkTimeListItem extends StatelessWidget {
                   SettingsCubit.get(context).expandedTilesValue[this.index]
                       ? SvgPicture.asset(kActiveCupertinoSwitchSVG)
                       : SvgPicture.asset(kUnActiveCupertinoSwitchSVG),
-              children: const <Widget>[
-                ListTile(title: Text('This is tile number 2')),
-              ],
+              children: <Widget>[buildWorkTimeDayListItemBody(context)],
               onExpansionChanged: (bool expanded) => SettingsCubit.get(context)
                   .changeExpandedTilesValue(expanded, this.index),
             ),
           ),
         ],
+      );
+
+  Widget buildWorkTimeDayListItemBody(context) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 28.0,
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Row(
+                    children: [
+                      OneLineText(
+                        kExaminationFrom,
+                        style: Theme.of(context).textTheme.headline5,
+                      ),
+                      Spacer(),
+                      InkWell(
+                        onTap: () {},
+                        child: Row(
+                          children: [
+                            OneLineText(
+                              kDemoTimePM,
+                              style: Theme.of(context).textTheme.headline5,
+                            ),
+                            SizedBox(
+                              width: 12.0,
+                            ),
+                            SvgPicture.asset(kBlackDownArrowSVG),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 44.0,
+                ),
+                Expanded(
+                  child: Row(
+                    children: [
+                      OneLineText(
+                        kExaminationTo,
+                        style: Theme.of(context).textTheme.headline5,
+                      ),
+                      Spacer(),
+                      InkWell(
+                        onTap: () {},
+                        child: Row(
+                          children: [
+                            OneLineText(
+                              kDemoTimeAM,
+                              style: Theme.of(context).textTheme.headline5,
+                            ),
+                            SizedBox(
+                              width: 12.0,
+                            ),
+                            SvgPicture.asset(kBlackDownArrowSVG),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 24,
+            ),
+            Row(
+              children: [
+                OneLineText(
+                  kExaminationDuration,
+                  style: Theme.of(context).textTheme.headline5,
+                ),
+                Spacer()
+              ],
+            ),
+          ],
+        ),
       );
 }

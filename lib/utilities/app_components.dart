@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:settings_new_look/utilities/app_colors.dart';
+
+import 'app_strings.dart';
 
 class OneLineText extends StatelessWidget {
   final String text;
@@ -36,6 +39,7 @@ class CustomDropDownButton extends StatelessWidget {
                 border: Border.all(color: kAppBorderColor)),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
+                icon: SvgPicture.asset(kBlackDownArrowSVG),
                 value: this.value,
                 elevation: 12,
                 style: Theme.of(context).textTheme.headline5,

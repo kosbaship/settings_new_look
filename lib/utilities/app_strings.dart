@@ -26,6 +26,11 @@ const String kExaminationType = 'Examination type';
 const String kConfirmSchedule = 'Confirm schedule';
 const String kExaminationDropdownInitialValue = 'Fixed Dates';
 const String kExaminationDropdownSecondValue = 'First in first out';
+const String kExaminationDuration = 'Examination duration';
+const String kExaminationFrom = 'From';
+const String kExaminationTo = 'To';
+const String kDemoTimePM = '6.00 PM';
+const String kDemoTimeAM = '11.00 AM';
 
 const String kConfirmationScheduleDropdownInitialValue = 'Permanent';
 const String kConfirmationScheduleDropdownSecondValue = 'Week';
