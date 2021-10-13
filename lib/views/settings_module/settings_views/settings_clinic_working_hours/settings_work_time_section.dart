@@ -31,7 +31,7 @@ class WorkTimeSection extends StatelessWidget {
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) => WorkTimeListItem(
-                  index: index,
+                  dayListItemIndex: index,
                 ),
                 itemCount: kDaysOfTheWeek.length,
               ),
@@ -42,9 +42,9 @@ class WorkTimeSection extends StatelessWidget {
 }
 
 class WorkTimeListItem extends StatelessWidget {
-  final int index;
+  final int dayListItemIndex;
 
-  const WorkTimeListItem({@required this.index});
+  const WorkTimeListItem({@required this.dayListItemIndex});
 
   @override
   Widget build(BuildContext context) => Column(
@@ -65,14 +65,14 @@ class WorkTimeListItem extends StatelessWidget {
                       border: Border(
                         bottom: BorderSide(
                             color: SettingsCubit.get(context)
-                                    .expandedTilesValue[this.index]
+                                    .expandedTilesValue[this.dayListItemIndex]
                                 ? kAppDefaultColor
                                 : kAppWhiteColor,
                             width: 2.0),
                       ),
                     ),
                     child: Text(
-                      kDaysOfTheWeek[this.index],
+                      kDaysOfTheWeek[this.dayListItemIndex],
                       style: Theme.of(context).textTheme.headline5.copyWith(
                             fontSize: 16.0,
                           ),
@@ -80,113 +80,148 @@ class WorkTimeListItem extends StatelessWidget {
                   ),
                 ],
               ),
-              trailing:
-                  SettingsCubit.get(context).expandedTilesValue[this.index]
-                      ? SvgPicture.asset(kActiveCupertinoSwitchSVG)
-                      : SvgPicture.asset(kUnActiveCupertinoSwitchSVG),
-              children: <Widget>[buildWorkTimeDayListItemBody(context)],
+              trailing: SettingsCubit.get(context)
+                      .expandedTilesValue[this.dayListItemIndex]
+                  ? SvgPicture.asset(kActiveCupertinoSwitchSVG)
+                  : SvgPicture.asset(kUnActiveCupertinoSwitchSVG),
+              children: <Widget>[
+                buildWorkTimeDayListItemBody(context, this.dayListItemIndex)
+              ],
               onExpansionChanged: (bool expanded) => SettingsCubit.get(context)
-                  .changeExpandedTilesValue(expanded, this.index),
+                  .changeExpandedTilesValue(expanded, this.dayListItemIndex),
             ),
           ),
         ],
       );
 
-  Widget buildWorkTimeDayListItemBody(context) => Padding(
+  Widget buildWorkTimeDayListItemBody(context, dayListItemIndex) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 28.0,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: Row(
-                    children: [
-                      OneLineText(
-                        kExaminationFrom,
-                        style: Theme.of(context).textTheme.headline5,
-                      ),
-                      Spacer(),
-                      InkWell(
-                        onTap: () {},
-                        child: Row(
-                          children: [
-                            OneLineText(
-                              kDemoTimePM,
-                              style: Theme.of(context).textTheme.headline5,
-                            ),
-                            SizedBox(
-                              width: 12.0,
-                            ),
-                            SvgPicture.asset(kBlackDownArrowSVG),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: 44.0,
-                ),
-                Expanded(
-                  child: Row(
-                    children: [
-                      OneLineText(
-                        kExaminationTo,
-                        style: Theme.of(context).textTheme.headline5,
-                      ),
-                      Spacer(),
-                      InkWell(
-                        onTap: () {},
-                        child: Row(
-                          children: [
-                            OneLineText(
-                              kDemoTimeAM,
-                              style: Theme.of(context).textTheme.headline5,
-                            ),
-                            SizedBox(
-                              width: 12.0,
-                            ),
-                            SvgPicture.asset(kBlackDownArrowSVG),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 24,
-            ),
-            Row(
-              children: [
-                OneLineText(
-                  kExaminationDuration,
-                  style: Theme.of(context).textTheme.headline5,
-                ),
-                Spacer(),
-              ],
-            ),
-            SizedBox(
-              height: 12,
-            ),
-            CustomDropDownButton2(
-              value:
-                  SettingsCubit.get(context).examinationDurationDropdownValue,
-              onChanged: (String newValue) => SettingsCubit.get(context)
-                  .changeExaminationDurationDropdownValue(newValue),
-              items: examinationDurationDropdownItems
-                  .map<DropdownMenuItem<String>>(
-                      (String value) => DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          ))
-                  .toList(),
-            )
-          ],
+        child: Container(
+          height: kOneShiftItemHeight * 2,
+          color: Colors.amber,
+          child: ListView.builder(
+            itemBuilder: (context, dayListItemBODYIndex) =>
+                _buildOneShiftItemBody(context, dayListItemBODYIndex),
+            itemCount: 2,
+          ),
         ),
       );
+
+  Widget _buildOneShiftItemBody(
+      BuildContext context, int dayListItemBODYIndex) {
+    return Column(
+      children: [
+        SizedBox(
+          height: 28.0,
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: Row(
+                children: [
+                  OneLineText(
+                    kExaminationFrom,
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
+                  Spacer(),
+                  InkWell(
+                    onTap: () {},
+                    child: Row(
+                      children: [
+                        OneLineText(
+                          kDemoTimePM,
+                          style: Theme.of(context).textTheme.headline5,
+                        ),
+                        SizedBox(
+                          width: 12.0,
+                        ),
+                        SvgPicture.asset(kBlackDownArrowSVG),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              width: 44.0,
+            ),
+            Expanded(
+              child: Row(
+                children: [
+                  OneLineText(
+                    kExaminationTo,
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
+                  Spacer(),
+                  InkWell(
+                    onTap: () {},
+                    child: Row(
+                      children: [
+                        OneLineText(
+                          kDemoTimeAM,
+                          style: Theme.of(context).textTheme.headline5,
+                        ),
+                        SizedBox(
+                          width: 12.0,
+                        ),
+                        SvgPicture.asset(kBlackDownArrowSVG),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 24,
+        ),
+        Row(
+          children: [
+            OneLineText(
+              kExaminationDuration,
+              style: Theme.of(context).textTheme.headline5,
+            ),
+            Spacer(),
+          ],
+        ),
+        SizedBox(
+          height: 12,
+        ),
+        CustomDropDownButton2(
+          value: SettingsCubit.get(context).examinationDurationDropdownValue,
+          onChanged: (String newValue) => SettingsCubit.get(context)
+              .changeExaminationDurationDropdownValue(newValue),
+          items: examinationDurationDropdownItems
+              .map<DropdownMenuItem<String>>(
+                  (String value) => DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      ))
+              .toList(),
+        ),
+        TextButton(
+            onPressed: () {
+              print('=======================================');
+              print(
+                  'dayListItemIndex: ${this.dayListItemIndex} dayListItemBODYIndex: $dayListItemBODYIndex');
+              print('=======================================');
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.add),
+                SizedBox(width: 8.0),
+                Text(
+                  kAddShift,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline5
+                      .copyWith(color: kAppDefaultColor),
+                ),
+              ],
+            ))
+      ],
+    );
+  }
 }

@@ -14,7 +14,7 @@ class ClinicWorkingHours extends StatelessWidget {
           child: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             child: Container(
-              color: Colors.red,
+              // color: Colors.red,
 
               /// TODO: Logic to make the whole list scrollable
 

@@ -21,6 +21,7 @@ const List<String> kDaysOfTheWeek = [
 const String kToastWarningText = 'Be Careful we still Developing';
 const String kClinicWorkingHours = 'Clinic working hour';
 const String kCallTimings = 'Call timings';
+const String kAddShift = 'add Shift';
 
 const String kExaminationType = 'Examination type';
 const String kConfirmSchedule = 'Confirm schedule';
@@ -59,3 +60,5 @@ const List<String> examinationDurationDropdownItems = [
   '105 minutes',
   '2 hour',
 ];
+
+const double kOneShiftItemHeight = 204.0;
