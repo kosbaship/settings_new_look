@@ -97,12 +97,21 @@ class WorkTimeListItem extends StatelessWidget {
   Widget buildWorkTimeDayListItemBody(context, dayListItemIndex) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Container(
-          height: kOneShiftItemHeight * 2,
+          height: kOneShiftItemHeight *
+              SettingsCubit.get(context)
+                  .listOfWorkTimeDayExaminationDurationItemLength[
+                      dayListItemIndex]
+                  .length,
           color: Colors.amber,
           child: ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
             itemBuilder: (context, dayListItemBODYIndex) =>
                 _buildOneShiftItemBody(context, dayListItemBODYIndex),
-            itemCount: 2,
+            itemCount: SettingsCubit.get(context)
+                .listOfWorkTimeDayExaminationDurationItemLength[
+                    dayListItemIndex]
+                .length,
           ),
         ),
       );
@@ -202,9 +211,15 @@ class WorkTimeListItem extends StatelessWidget {
         ),
         TextButton(
             onPressed: () {
+              SettingsCubit.get(context)
+                  .listOfWorkTimeDayExaminationDurationItemLength[
+                      this.dayListItemIndex]
+                  .add(dayListItemBODYIndex);
               print('=======================================');
               print(
                   'dayListItemIndex: ${this.dayListItemIndex} dayListItemBODYIndex: $dayListItemBODYIndex');
+              print(
+                  '${SettingsCubit.get(context).listOfWorkTimeDayExaminationDurationItemLength[this.dayListItemIndex].length}');
               print('=======================================');
             },
             child: Row(

@@ -58,6 +58,16 @@ class SettingsCubit extends Cubit<SettingsStates> {
     emit(SettingsChangeExaminationDurationState());
   }
 
+  List<List<int>> listOfWorkTimeDayExaminationDurationItemLength = [
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+    [1, 2],
+  ];
+
   /// ======================================================
   saveAllTheSettings() {
     if (this._checkExaminationPriceTextFieldValidation()) {
