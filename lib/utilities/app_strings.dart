@@ -47,3 +47,15 @@ const String kFeesSVG = 'assets/fees.svg';
 const String kActiveCupertinoSwitchSVG = 'assets/active_cupertino_switch.svg';
 const String kUnActiveCupertinoSwitchSVG =
     'assets/un_active_cupertino_switch.svg';
+
+const String kExaminationDurationDropdownInitialValue = '15 minutes';
+const List<String> examinationDurationDropdownItems = [
+  '15 minutes',
+  '30 minutes',
+  '45 minutes',
+  '1 hour',
+  '75 minutes',
+  '90 minutes',
+  '105 minutes',
+  '2 hour',
+];

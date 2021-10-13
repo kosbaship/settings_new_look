@@ -52,6 +52,26 @@ class CustomDropDownButton extends StatelessWidget {
       );
 }
 
+class CustomDropDownButton2 extends StatelessWidget {
+  final String value;
+  final List<DropdownMenuItem<String>> items;
+  final void Function(String) onChanged;
+
+  CustomDropDownButton2(
+      {@required this.value, @required this.items, @required this.onChanged});
+
+  @override
+  Widget build(BuildContext context) => DropdownButton<String>(
+        isExpanded: true,
+        icon: SvgPicture.asset(kBlackDownArrowSVG),
+        value: this.value,
+        elevation: 12,
+        style: Theme.of(context).textTheme.headline5,
+        onChanged: this.onChanged,
+        items: this.items,
+      );
+}
+
 class CustomTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;

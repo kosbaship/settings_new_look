@@ -50,6 +50,14 @@ class SettingsCubit extends Cubit<SettingsStates> {
     emit(SettingsChangeExpandedTilesValueState());
   }
 
+  String examinationDurationDropdownValue =
+      kExaminationDurationDropdownInitialValue;
+
+  changeExaminationDurationDropdownValue(examinationDurationDropdownValue) {
+    this.examinationDurationDropdownValue = examinationDurationDropdownValue;
+    emit(SettingsChangeExaminationDurationState());
+  }
+
   /// ======================================================
   saveAllTheSettings() {
     if (this._checkExaminationPriceTextFieldValidation()) {

@@ -167,9 +167,25 @@ class WorkTimeListItem extends StatelessWidget {
                   kExaminationDuration,
                   style: Theme.of(context).textTheme.headline5,
                 ),
-                Spacer()
+                Spacer(),
               ],
             ),
+            SizedBox(
+              height: 12,
+            ),
+            CustomDropDownButton2(
+              value:
+                  SettingsCubit.get(context).examinationDurationDropdownValue,
+              onChanged: (String newValue) => SettingsCubit.get(context)
+                  .changeExaminationDurationDropdownValue(newValue),
+              items: examinationDurationDropdownItems
+                  .map<DropdownMenuItem<String>>(
+                      (String value) => DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          ))
+                  .toList(),
+            )
           ],
         ),
       );
