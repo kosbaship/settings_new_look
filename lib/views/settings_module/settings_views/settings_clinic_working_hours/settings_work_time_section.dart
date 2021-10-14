@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:settings_new_look/data/remote/api_helper.dart';
 import 'package:settings_new_look/utilities/app_colors.dart';
 import 'package:settings_new_look/utilities/app_components.dart';
 import 'package:settings_new_look/utilities/app_strings.dart';
@@ -103,7 +102,6 @@ class WorkTimeListItem extends StatelessWidget {
                   .listOfWorkTimeDayExaminationDurationItemLength[
                       dayListItemIndex]
                   .length,
-          color: Colors.amber,
           child: ListView.builder(
             physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
@@ -222,7 +220,6 @@ class WorkTimeListItem extends StatelessWidget {
               print(
                   '${SettingsCubit.get(context).listOfWorkTimeDayExaminationDurationItemLength[this.dayListItemIndex].length}');
               print('=======================================');
-              ApiHelper.getInstance.getDoctorSettingsData();
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
