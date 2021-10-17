@@ -10,7 +10,7 @@ class ErrorNotFoundException implements Exception {
 
 class ServerDownException implements Exception {
   @override
-  String toString() => 'Server is down';
+  String toString() => 'Server is down call Xerk';
 }
 
 class NoInternetConnectionException implements Exception {
