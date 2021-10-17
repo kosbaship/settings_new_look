@@ -2,6 +2,10 @@ abstract class SettingsStates {}
 
 class SettingsInitialState extends SettingsStates {}
 
+class SettingsLoadingDataInProgressState extends SettingsStates {}
+
+class SettingsLoadingDataSuccessState extends SettingsStates {}
+
 class SettingsChangeTabBarIndexState extends SettingsStates {}
 
 class SettingsChangeExaminationTypeState extends SettingsStates {}

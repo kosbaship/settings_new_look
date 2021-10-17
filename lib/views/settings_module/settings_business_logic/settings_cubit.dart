@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:settings_new_look/data/models/doctor_settings_model.dart';
+import 'package:settings_new_look/data/models/schadule_doctor_fixed_model.dart';
 import 'package:settings_new_look/data/remote/api_helper.dart';
 import 'package:settings_new_look/utilities/app_strings.dart';
 import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_states.dart';
@@ -10,9 +10,18 @@ class SettingsCubit extends Cubit<SettingsStates> {
 
   static SettingsCubit get(context) => BlocProvider.of(context);
 
-  DoctorSettings _doctorSettings;
-  getDoctorSettingsData() async =>
-      _doctorSettings = await ApiHelper.getInstance.getDoctorSettingsData();
+  ScheduleDoctorFixedModel _doctorSettings;
+
+  getDoctorSettingsData() {
+    emit(SettingsLoadingDataInProgressState());
+    ApiHelper.getInstance
+        .getDoctorSettingsData()
+        .then((_scheduleDoctorFixedModel) {
+      emit(SettingsLoadingDataSuccessState());
+      _doctorSettings = _scheduleDoctorFixedModel;
+      return _doctorSettings;
+    });
+  }
 
   int tabBarIndex = 0;
 
