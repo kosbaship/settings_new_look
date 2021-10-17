@@ -109,7 +109,6 @@ class WorkTimeListItem extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              color: Colors.deepOrange,
               height: kOneShiftItemHeight,
               child: Column(
                 children: [
@@ -221,7 +220,8 @@ class WorkTimeListItem extends StatelessWidget {
                         .toList(),
                   ),
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () => SettingsCubit.get(context)
+                          .enableSecondShift(dayListItemIndex),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -239,8 +239,9 @@ class WorkTimeListItem extends StatelessWidget {
                 ],
               ),
             ),
+
+            /// hide or show shift 2 logic will be written here
             Container(
-              color: Colors.green,
               height: kOneShiftItemHeight,
               child: Column(
                 children: [
@@ -352,18 +353,22 @@ class WorkTimeListItem extends StatelessWidget {
                         .toList(),
                   ),
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () => SettingsCubit.get(context)
+                          .disableSecondShift(dayListItemIndex),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.add),
+                          Icon(
+                            Icons.remove,
+                            color: kToastError,
+                          ),
                           SizedBox(width: 8.0),
                           Text(
-                            kAddShift,
+                            kRemoveShift,
                             style: Theme.of(context)
                                 .textTheme
                                 .headline5
-                                .copyWith(color: kAppDefaultColor),
+                                .copyWith(color: kToastError),
                           ),
                         ],
                       ))

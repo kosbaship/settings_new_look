@@ -15,3 +15,7 @@ class SettingsConfirmationScheduleTypeState extends SettingsStates {}
 class SettingsChangeExpandedTilesValueState extends SettingsStates {}
 
 class SettingsChangeExaminationDurationState extends SettingsStates {}
+
+class SettingsEnableSecondShiftDurationState extends SettingsStates {}
+
+class SettingsDisableSecondShiftDurationState extends SettingsStates {}

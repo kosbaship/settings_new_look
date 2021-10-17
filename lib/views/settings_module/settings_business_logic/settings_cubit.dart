@@ -45,6 +45,26 @@ class SettingsCubit extends Cubit<SettingsStates> {
     emit(SettingsChangeExpandedTilesValueState());
   }
 
+  enableSecondShift(dayListItemIndex) {
+    this
+        ._doctorSettings
+        .result
+        .clinic
+        .workingDays[dayListItemIndex]
+        .wdayActiveDay = 1.toString();
+    emit(SettingsEnableSecondShiftDurationState());
+  }
+
+  disableSecondShift(dayListItemIndex) {
+    this
+        ._doctorSettings
+        .result
+        .clinic
+        .workingDays[dayListItemIndex]
+        .wdayActiveDay = 0.toString();
+    emit(SettingsDisableSecondShiftDurationState());
+  }
+
   changeFirstShiftExaminationDurationDropdownValue(
       examinationDurationDropdownValue, dayListItemIndex) {
     this
