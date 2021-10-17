@@ -29,7 +29,10 @@ class ApiHelper {
         doctorSettings =
             ScheduleDoctorFixedModel.fromJson(jsonDecode(response.body));
         print(doctorSettings.subMessage);
-        print(response.body);
+        print(doctorSettings.status);
+        print(doctorSettings.message);
+        print(doctorSettings.result.examinationType);
+        // print(doctorSettings.result.clinic.priceValue.toString());
         return doctorSettings;
         break;
       case 404:

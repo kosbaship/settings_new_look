@@ -9,7 +9,7 @@ class ScheduleDoctorFixedModel {
     subMessage = json['sub_message'];
     message = json['message'];
     result =
-        json['result'] != null ? new Result.fromJson(json['result']) : null;
+        json['return'] != null ? new Result.fromJson(json['return']) : null;
   }
 }
 

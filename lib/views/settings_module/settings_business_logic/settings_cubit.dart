@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:settings_new_look/data/models/schadule_doctor_fixed_model.dart';
 import 'package:settings_new_look/data/remote/api_helper.dart';
 import 'package:settings_new_look/utilities/app_strings.dart';
 import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_states.dart';
@@ -9,19 +8,6 @@ class SettingsCubit extends Cubit<SettingsStates> {
   SettingsCubit() : super(SettingsInitialState());
 
   static SettingsCubit get(context) => BlocProvider.of(context);
-
-  ScheduleDoctorFixedModel _doctorSettings;
-
-  getDoctorSettingsData() {
-    emit(SettingsLoadingDataInProgressState());
-    ApiHelper.getInstance
-        .getDoctorSettingsData()
-        .then((_scheduleDoctorFixedModel) {
-      emit(SettingsLoadingDataSuccessState());
-      _doctorSettings = _scheduleDoctorFixedModel;
-      return _doctorSettings;
-    });
-  }
 
   int tabBarIndex = 0;
 
@@ -45,7 +31,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
   }
 
   final formKey = GlobalKey<FormState>();
-  final examinationPriceController = TextEditingController();
+  TextEditingController examinationPriceController = TextEditingController();
 
   _checkExaminationPriceTextFieldValidation() =>
       this.formKey.currentState.validate();
@@ -82,6 +68,18 @@ class SettingsCubit extends Cubit<SettingsStates> {
     [1, 2],
     [1, 2],
   ];
+
+  getDoctorSettingsData() {
+    emit(SettingsLoadingDataInProgressState());
+    ApiHelper.getInstance
+        .getDoctorSettingsData()
+        .then((_scheduleDoctorFixedModel) {
+      this.examinationPriceController.text =
+          _scheduleDoctorFixedModel.result.clinic.priceValue.toString() ?? '0';
+
+      emit(SettingsLoadingDataSuccessState());
+    });
+  }
 
   /// ======================================================
   saveAllTheSettings() {

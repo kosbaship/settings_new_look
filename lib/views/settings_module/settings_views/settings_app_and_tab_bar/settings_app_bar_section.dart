@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:settings_new_look/data/remote/api_helper.dart';
 import 'package:settings_new_look/utilities/app_components.dart';
 import 'package:settings_new_look/utilities/app_strings.dart';
-import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_cubit.dart';
 
 AppBar buildAppBarSection(BuildContext context) => AppBar(
       centerTitle: true,
@@ -15,7 +15,10 @@ AppBar buildAppBarSection(BuildContext context) => AppBar(
       ),
       actions: [
         TextButton(
-          onPressed: () => SettingsCubit.get(context).saveAllTheSettings(),
+          onPressed: () async {
+            await ApiHelper.getInstance.getDoctorSettingsData();
+            // return SettingsCubit.get(context).saveAllTheSettings();
+          },
           child: OneLineText(
             kSave.toUpperCase(),
             style: Theme.of(context).textTheme.button,

@@ -80,6 +80,7 @@ class ExaminationAndConfirmScheduleSection extends StatelessWidget {
             padding:
                 const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
             decoration: BoxDecoration(
+                color: Colors.cyan,
                 borderRadius: BorderRadius.circular(12.0),
                 border: Border.all(color: kAppBorderColor)),
             child: Column(
