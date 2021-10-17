@@ -60,6 +60,7 @@ class WorkingDays {
   String wdayDuration;
   String wdayDuration2;
   String wdayActiveDay;
+  String wdayActiveShift;
 
   WorkingDays.fromJson(Map<String, dynamic> json) {
     wdayDayName = json['wday_day_name'];
@@ -69,6 +70,7 @@ class WorkingDays {
     wdayTo2 = json['wday_to_2'];
     wdayDuration = json['wday_duration'];
     wdayDuration2 = json['wday_duration2'];
+    wdayActiveShift = json['wday_active_shift'];
     wdayActiveDay = json['wday_active_day'];
   }
 }

@@ -39,7 +39,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
   _checkExaminationPriceTextFieldValidation() =>
       this.formKey.currentState.validate();
 
-  changeExpandedTilesValue(bool expandedTilesValue, index) {
+  activateDay(bool expandedTilesValue, index) {
     this._doctorSettings.result.clinic.workingDays[index].wdayActiveDay =
         expandedTilesValue ? 1.toString() : 0.toString();
     emit(SettingsChangeExpandedTilesValueState());
@@ -51,7 +51,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
         .result
         .clinic
         .workingDays[dayListItemIndex]
-        .wdayActiveDay = 1.toString();
+        .wdayActiveShift = 1.toString();
     emit(SettingsEnableSecondShiftDurationState());
   }
 
@@ -61,7 +61,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
         .result
         .clinic
         .workingDays[dayListItemIndex]
-        .wdayActiveDay = 0.toString();
+        .wdayActiveShift = 0.toString();
     emit(SettingsDisableSecondShiftDurationState());
   }
 
