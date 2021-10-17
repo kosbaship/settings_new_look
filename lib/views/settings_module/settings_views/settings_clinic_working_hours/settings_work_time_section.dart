@@ -106,146 +106,271 @@ class WorkTimeListItem extends StatelessWidget {
 
   Widget buildWorkTimeDayListItemBody(context, dayListItemIndex) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Container(
-          height: kOneShiftItemHeight *
-              SettingsCubit.get(context)
-                  .listOfWorkTimeDayExaminationDurationItemLength[
-                      dayListItemIndex]
-                  .length,
-          child: ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemBuilder: (context, dayListItemBODYIndex) =>
-                _buildOneShiftItemBody(context, dayListItemBODYIndex),
-            itemCount: SettingsCubit.get(context)
-                .listOfWorkTimeDayExaminationDurationItemLength[
-                    dayListItemIndex]
-                .length,
-          ),
+        child: Column(
+          children: [
+            Container(
+              color: Colors.deepOrange,
+              height: kOneShiftItemHeight,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 28.0,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Row(
+                          children: [
+                            OneLineText(
+                              kExaminationFrom,
+                              style: Theme.of(context).textTheme.headline5,
+                            ),
+                            Spacer(),
+                            InkWell(
+                              onTap: () {},
+                              child: Row(
+                                children: [
+                                  OneLineText(
+                                    SettingsCubit.get(context)
+                                        .doctorSettings
+                                        .result
+                                        .clinic
+                                        .workingDays[dayListItemIndex]
+                                        .wdayFrom,
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
+                                  ),
+                                  SizedBox(
+                                    width: 12.0,
+                                  ),
+                                  SvgPicture.asset(kBlackDownArrowSVG),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: 44.0,
+                      ),
+                      Expanded(
+                        child: Row(
+                          children: [
+                            OneLineText(
+                              kExaminationTo,
+                              style: Theme.of(context).textTheme.headline5,
+                            ),
+                            Spacer(),
+                            InkWell(
+                              onTap: () {},
+                              child: Row(
+                                children: [
+                                  OneLineText(
+                                    SettingsCubit.get(context)
+                                        .doctorSettings
+                                        .result
+                                        .clinic
+                                        .workingDays[dayListItemIndex]
+                                        .wdayTo,
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
+                                  ),
+                                  SizedBox(
+                                    width: 12.0,
+                                  ),
+                                  SvgPicture.asset(kBlackDownArrowSVG),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  Row(
+                    children: [
+                      OneLineText(
+                        kExaminationDuration,
+                        style: Theme.of(context).textTheme.headline5,
+                      ),
+                      Spacer(),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  CustomDropDownButton2(
+                    value: SettingsCubit.get(context)
+                        .doctorSettings
+                        .result
+                        .clinic
+                        .workingDays[dayListItemIndex]
+                        .wdayDuration,
+                    onChanged: (String newValue) => SettingsCubit.get(context)
+                        .changeFirstShiftExaminationDurationDropdownValue(
+                            newValue, dayListItemIndex),
+                    items: examinationDurationDropdownItems
+                        .map<DropdownMenuItem<String>>(
+                            (String value) => DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value + ' minutes'),
+                                ))
+                        .toList(),
+                  ),
+                  TextButton(
+                      onPressed: () {},
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.add),
+                          SizedBox(width: 8.0),
+                          Text(
+                            kAddShift,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline5
+                                .copyWith(color: kAppDefaultColor),
+                          ),
+                        ],
+                      ))
+                ],
+              ),
+            ),
+            Container(
+              color: Colors.green,
+              height: kOneShiftItemHeight,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 28.0,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Row(
+                          children: [
+                            OneLineText(
+                              kExaminationFrom,
+                              style: Theme.of(context).textTheme.headline5,
+                            ),
+                            Spacer(),
+                            InkWell(
+                              onTap: () {},
+                              child: Row(
+                                children: [
+                                  OneLineText(
+                                    SettingsCubit.get(context)
+                                        .doctorSettings
+                                        .result
+                                        .clinic
+                                        .workingDays[dayListItemIndex]
+                                        .wdayFrom2,
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
+                                  ),
+                                  SizedBox(
+                                    width: 12.0,
+                                  ),
+                                  SvgPicture.asset(kBlackDownArrowSVG),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: 44.0,
+                      ),
+                      Expanded(
+                        child: Row(
+                          children: [
+                            OneLineText(
+                              kExaminationTo,
+                              style: Theme.of(context).textTheme.headline5,
+                            ),
+                            Spacer(),
+                            InkWell(
+                              onTap: () {},
+                              child: Row(
+                                children: [
+                                  OneLineText(
+                                    SettingsCubit.get(context)
+                                        .doctorSettings
+                                        .result
+                                        .clinic
+                                        .workingDays[dayListItemIndex]
+                                        .wdayTo2,
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
+                                  ),
+                                  SizedBox(
+                                    width: 12.0,
+                                  ),
+                                  SvgPicture.asset(kBlackDownArrowSVG),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  Row(
+                    children: [
+                      OneLineText(
+                        kExaminationDuration,
+                        style: Theme.of(context).textTheme.headline5,
+                      ),
+                      Spacer(),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  CustomDropDownButton2(
+                    value: SettingsCubit.get(context)
+                        .doctorSettings
+                        .result
+                        .clinic
+                        .workingDays[dayListItemIndex]
+                        .wdayDuration2,
+                    onChanged: (String newValue) => SettingsCubit.get(context)
+                        .changeSecondShiftExaminationDurationDropdownValue(
+                            newValue, dayListItemIndex),
+                    items: examinationDurationDropdownItems
+                        .map<DropdownMenuItem<String>>(
+                            (String value) => DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value + ' minutes'),
+                                ))
+                        .toList(),
+                  ),
+                  TextButton(
+                      onPressed: () {},
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.add),
+                          SizedBox(width: 8.0),
+                          Text(
+                            kAddShift,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline5
+                                .copyWith(color: kAppDefaultColor),
+                          ),
+                        ],
+                      ))
+                ],
+              ),
+            ),
+          ],
         ),
       );
-
-  Widget _buildOneShiftItemBody(
-      BuildContext context, int dayListItemBODYIndex) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 28.0,
-        ),
-        Row(
-          children: [
-            Expanded(
-              child: Row(
-                children: [
-                  OneLineText(
-                    kExaminationFrom,
-                    style: Theme.of(context).textTheme.headline5,
-                  ),
-                  Spacer(),
-                  InkWell(
-                    onTap: () {},
-                    child: Row(
-                      children: [
-                        OneLineText(
-                          kDemoTimePM,
-                          style: Theme.of(context).textTheme.headline5,
-                        ),
-                        SizedBox(
-                          width: 12.0,
-                        ),
-                        SvgPicture.asset(kBlackDownArrowSVG),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              width: 44.0,
-            ),
-            Expanded(
-              child: Row(
-                children: [
-                  OneLineText(
-                    kExaminationTo,
-                    style: Theme.of(context).textTheme.headline5,
-                  ),
-                  Spacer(),
-                  InkWell(
-                    onTap: () {},
-                    child: Row(
-                      children: [
-                        OneLineText(
-                          kDemoTimeAM,
-                          style: Theme.of(context).textTheme.headline5,
-                        ),
-                        SizedBox(
-                          width: 12.0,
-                        ),
-                        SvgPicture.asset(kBlackDownArrowSVG),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
-        SizedBox(
-          height: 24,
-        ),
-        Row(
-          children: [
-            OneLineText(
-              kExaminationDuration,
-              style: Theme.of(context).textTheme.headline5,
-            ),
-            Spacer(),
-          ],
-        ),
-        SizedBox(
-          height: 12,
-        ),
-        CustomDropDownButton2(
-          value: SettingsCubit.get(context).examinationDurationDropdownValue,
-          onChanged: (String newValue) => SettingsCubit.get(context)
-              .changeExaminationDurationDropdownValue(newValue),
-          items: examinationDurationDropdownItems
-              .map<DropdownMenuItem<String>>(
-                  (String value) => DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      ))
-              .toList(),
-        ),
-        TextButton(
-            onPressed: () {
-              SettingsCubit.get(context)
-                  .listOfWorkTimeDayExaminationDurationItemLength[
-                      this.dayListItemIndex]
-                  .add(dayListItemBODYIndex);
-              print('=======================================');
-              print(
-                  'dayListItemIndex: ${this.dayListItemIndex} dayListItemBODYIndex: $dayListItemBODYIndex');
-              print(
-                  '${SettingsCubit.get(context).listOfWorkTimeDayExaminationDurationItemLength[this.dayListItemIndex].length}');
-              print('=======================================');
-            },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.add),
-                SizedBox(width: 8.0),
-                Text(
-                  kAddShift,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline5
-                      .copyWith(color: kAppDefaultColor),
-                ),
-              ],
-            ))
-      ],
-    );
-  }
 }

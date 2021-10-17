@@ -45,23 +45,27 @@ class SettingsCubit extends Cubit<SettingsStates> {
     emit(SettingsChangeExpandedTilesValueState());
   }
 
-  String examinationDurationDropdownValue =
-      kExaminationDurationDropdownInitialValue;
-
-  changeExaminationDurationDropdownValue(examinationDurationDropdownValue) {
-    this.examinationDurationDropdownValue = examinationDurationDropdownValue;
+  changeFirstShiftExaminationDurationDropdownValue(
+      examinationDurationDropdownValue, dayListItemIndex) {
+    this
+        ._doctorSettings
+        .result
+        .clinic
+        .workingDays[dayListItemIndex]
+        .wdayDuration = examinationDurationDropdownValue;
     emit(SettingsChangeExaminationDurationState());
   }
 
-  List<List<int>> listOfWorkTimeDayExaminationDurationItemLength = [
-    [1, 2],
-    [1, 2],
-    [1, 2],
-    [1, 2],
-    [1, 2],
-    [1, 2],
-    [1, 2],
-  ];
+  changeSecondShiftExaminationDurationDropdownValue(
+      examinationDurationDropdownValue, dayListItemIndex) {
+    this
+        ._doctorSettings
+        .result
+        .clinic
+        .workingDays[dayListItemIndex]
+        .wdayDuration2 = examinationDurationDropdownValue;
+    emit(SettingsChangeExaminationDurationState());
+  }
 
   getDoctorSettingsData() {
     emit(SettingsLoadingDataInProgressState());
@@ -74,8 +78,6 @@ class SettingsCubit extends Cubit<SettingsStates> {
       //Examination Price
       this.examinationPriceController.text =
           this._doctorSettings.result.clinic.priceValue.toString() ?? '0';
-
-      // WorkingTime
 
       emit(SettingsLoadingDataSuccessState());
     });
