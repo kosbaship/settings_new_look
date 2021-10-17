@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:settings_new_look/utilities/app_colors.dart';
 import 'package:settings_new_look/utilities/app_components.dart';
+import 'package:settings_new_look/utilities/app_enums.dart';
+import 'package:settings_new_look/utilities/app_helper_methods.dart';
 import 'package:settings_new_look/utilities/app_strings.dart';
 import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_cubit.dart';
 
@@ -126,7 +129,47 @@ class WorkTimeListItem extends StatelessWidget {
                             ),
                             Spacer(),
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                onAlertWithCustomContentPressed(context,
+                                    title: 'Choose Time',
+                                    buttons: [
+                                      DialogButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                          'Cancel',
+                                          style:
+                                              TextStyle(color: kAppWhiteColor),
+                                        ),
+                                        color: kToastError,
+                                      ),
+                                      DialogButton(
+                                        onPressed: () {
+                                          SettingsCubit.get(context)
+                                              .confirmSelectedDate(
+                                                  dayListItemIndex,
+                                                  ShiftType.FirstShiftStart);
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                          'Confirm',
+                                          style:
+                                              TextStyle(color: kAppWhiteColor),
+                                        ),
+                                        color: kToastSuccess,
+                                      ),
+                                    ],
+                                    contentWidget: showDatePickerWidget(
+                                      context,
+                                      250,
+                                      (dateTime) {
+                                        SettingsCubit.get(context)
+                                            .selectDate(dateTime);
+                                      },
+                                      CupertinoDatePickerMode.time,
+                                    ));
+                              },
                               child: Row(
                                 children: [
                                   OneLineText(
@@ -161,7 +204,47 @@ class WorkTimeListItem extends StatelessWidget {
                             ),
                             Spacer(),
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                onAlertWithCustomContentPressed(context,
+                                    title: 'Choose Time',
+                                    buttons: [
+                                      DialogButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                          'Cancel',
+                                          style:
+                                              TextStyle(color: kAppWhiteColor),
+                                        ),
+                                        color: kToastError,
+                                      ),
+                                      DialogButton(
+                                        onPressed: () {
+                                          SettingsCubit.get(context)
+                                              .confirmSelectedDate(
+                                                  dayListItemIndex,
+                                                  ShiftType.FirstShiftEnd);
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                          'Confirm',
+                                          style:
+                                              TextStyle(color: kAppWhiteColor),
+                                        ),
+                                        color: kToastSuccess,
+                                      ),
+                                    ],
+                                    contentWidget: showDatePickerWidget(
+                                      context,
+                                      250,
+                                      (dateTime) {
+                                        SettingsCubit.get(context)
+                                            .selectDate(dateTime);
+                                      },
+                                      CupertinoDatePickerMode.time,
+                                    ));
+                              },
                               child: Row(
                                 children: [
                                   OneLineText(
@@ -265,7 +348,50 @@ class WorkTimeListItem extends StatelessWidget {
                                   ),
                                   Spacer(),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      {
+                                        onAlertWithCustomContentPressed(context,
+                                            title: 'Choose Time',
+                                            buttons: [
+                                              DialogButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(
+                                                  'Cancel',
+                                                  style: TextStyle(
+                                                      color: kAppWhiteColor),
+                                                ),
+                                                color: kToastError,
+                                              ),
+                                              DialogButton(
+                                                onPressed: () {
+                                                  SettingsCubit.get(context)
+                                                      .confirmSelectedDate(
+                                                          dayListItemIndex,
+                                                          ShiftType
+                                                              .SecondShiftStart);
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(
+                                                  'Confirm',
+                                                  style: TextStyle(
+                                                      color: kAppWhiteColor),
+                                                ),
+                                                color: kToastSuccess,
+                                              ),
+                                            ],
+                                            contentWidget: showDatePickerWidget(
+                                              context,
+                                              250,
+                                              (dateTime) {
+                                                SettingsCubit.get(context)
+                                                    .selectDate(dateTime);
+                                              },
+                                              CupertinoDatePickerMode.time,
+                                            ));
+                                      }
+                                    },
                                     child: Row(
                                       children: [
                                         OneLineText(
@@ -302,7 +428,50 @@ class WorkTimeListItem extends StatelessWidget {
                                   ),
                                   Spacer(),
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      {
+                                        onAlertWithCustomContentPressed(context,
+                                            title: 'Choose Time',
+                                            buttons: [
+                                              DialogButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(
+                                                  'Cancel',
+                                                  style: TextStyle(
+                                                      color: kAppWhiteColor),
+                                                ),
+                                                color: kToastError,
+                                              ),
+                                              DialogButton(
+                                                onPressed: () {
+                                                  SettingsCubit.get(context)
+                                                      .confirmSelectedDate(
+                                                          dayListItemIndex,
+                                                          ShiftType
+                                                              .SecondShiftEnd);
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(
+                                                  'Confirm',
+                                                  style: TextStyle(
+                                                      color: kAppWhiteColor),
+                                                ),
+                                                color: kToastSuccess,
+                                              ),
+                                            ],
+                                            contentWidget: showDatePickerWidget(
+                                              context,
+                                              250,
+                                              (dateTime) {
+                                                SettingsCubit.get(context)
+                                                    .selectDate(dateTime);
+                                              },
+                                              CupertinoDatePickerMode.time,
+                                            ));
+                                      }
+                                    },
                                     child: Row(
                                       children: [
                                         OneLineText(

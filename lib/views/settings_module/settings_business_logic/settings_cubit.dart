@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:settings_new_look/data/models/schadule_doctor_fixed_model.dart';
 import 'package:settings_new_look/data/remote/api_helper.dart';
+import 'package:settings_new_look/utilities/app_enums.dart';
 import 'package:settings_new_look/utilities/app_strings.dart';
 import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_states.dart';
 
@@ -85,6 +86,55 @@ class SettingsCubit extends Cubit<SettingsStates> {
         .workingDays[dayListItemIndex]
         .wdayDuration2 = examinationDurationDropdownValue;
     emit(SettingsChangeExaminationDurationState());
+  }
+
+  DateTime fullDatTime = DateTime.now();
+
+  confirmSelectedDate(dayListItemIndex, ShiftType shiftType) {
+    switch (shiftType) {
+      case ShiftType.FirstShiftStart:
+        this
+            ._doctorSettings
+            .result
+            .clinic
+            .workingDays[dayListItemIndex]
+            .wdayFrom = '${fullDatTime.hour}:${fullDatTime.minute}';
+        break;
+      case ShiftType.FirstShiftEnd:
+        this
+            ._doctorSettings
+            .result
+            .clinic
+            .workingDays[dayListItemIndex]
+            .wdayTo = '${fullDatTime.hour}:${fullDatTime.minute}';
+        break;
+      case ShiftType.SecondShiftStart:
+        this
+            ._doctorSettings
+            .result
+            .clinic
+            .workingDays[dayListItemIndex]
+            .wdayFrom2 = '${fullDatTime.hour}:${fullDatTime.minute}';
+        break;
+      case ShiftType.SecondShiftEnd:
+        this
+            ._doctorSettings
+            .result
+            .clinic
+            .workingDays[dayListItemIndex]
+            .wdayTo2 = '${fullDatTime.hour}:${fullDatTime.minute}';
+        break;
+      default:
+        break;
+    }
+
+    emit(SettingsConfirmSelectedDateState());
+  }
+
+  selectDate(dateTime) {
+    print('dateTime $dateTime');
+    fullDatTime = dateTime;
+    emit(SettingsSelectDateState());
   }
 
   getDoctorSettingsData() {

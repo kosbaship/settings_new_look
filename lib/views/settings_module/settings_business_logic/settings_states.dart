@@ -19,3 +19,7 @@ class SettingsChangeExaminationDurationState extends SettingsStates {}
 class SettingsEnableSecondShiftDurationState extends SettingsStates {}
 
 class SettingsDisableSecondShiftDurationState extends SettingsStates {}
+
+class SettingsConfirmSelectedDateState extends SettingsStates {}
+
+class SettingsSelectDateState extends SettingsStates {}
