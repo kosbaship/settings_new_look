@@ -28,15 +28,18 @@ class ApiHelper {
       case 200:
         doctorSettings =
             ScheduleDoctorFixedModel.fromJson(jsonDecode(response.body));
+        print('Status ${doctorSettings.status}');
         print(doctorSettings.subMessage);
-        print(doctorSettings.status);
         print(doctorSettings.message);
         print(doctorSettings.result.examinationType);
-        // print(doctorSettings.result.clinic.priceValue.toString());
         return doctorSettings;
         break;
       case 404:
         throw ErrorNotFoundException(message: 'Doctor Settings');
+        break;
+      case 500:
+      case 501:
+        throw ServerDownException();
         break;
       default:
         return null;

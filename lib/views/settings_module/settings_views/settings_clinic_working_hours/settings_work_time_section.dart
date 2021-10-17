@@ -64,8 +64,13 @@ class WorkTimeListItem extends StatelessWidget {
                     decoration: BoxDecoration(
                       border: Border(
                         bottom: BorderSide(
-                            color: SettingsCubit.get(context)
-                                    .expandedTilesValue[this.dayListItemIndex]
+                            color: int.tryParse(SettingsCubit.get(context)
+                                        .doctorSettings
+                                        .result
+                                        .clinic
+                                        .workingDays[this.dayListItemIndex]
+                                        .wdayActiveDay) ==
+                                    1
                                 ? kAppDefaultColor
                                 : kAppWhiteColor,
                             width: 2.0),
@@ -80,8 +85,13 @@ class WorkTimeListItem extends StatelessWidget {
                   ),
                 ],
               ),
-              trailing: SettingsCubit.get(context)
-                      .expandedTilesValue[this.dayListItemIndex]
+              trailing: int.tryParse(SettingsCubit.get(context)
+                          .doctorSettings
+                          .result
+                          .clinic
+                          .workingDays[this.dayListItemIndex]
+                          .wdayActiveDay) ==
+                      1
                   ? SvgPicture.asset(kActiveCupertinoSwitchSVG)
                   : SvgPicture.asset(kUnActiveCupertinoSwitchSVG),
               children: <Widget>[
