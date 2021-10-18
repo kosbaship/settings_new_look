@@ -61,6 +61,15 @@ class WorkTimeListItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(12.0),
             ),
             child: ExpansionTile(
+              initiallyExpanded: int.tryParse(SettingsCubit.get(context)
+                          .doctorSettings
+                          .result
+                          .clinic
+                          .workingDays[this.dayListItemIndex]
+                          .wdayActiveDay) ==
+                      1
+                  ? true
+                  : false,
               title: Row(
                 children: [
                   Container(
