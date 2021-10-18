@@ -21,7 +21,10 @@ class SettingsPage extends StatelessWidget {
               backgroundColor: kAppBackgroundColor,
               appBar: buildAppBarSection(context),
               body: state is! SettingsLoadingDataInProgressState
-                  ? _buildSettingScreenLayout(context)
+                  ? state is! SettingsErrorLoadingDataState
+                      ? _buildSettingScreenLayout(context)
+                      : _buildErrorLayout(
+                          (state as SettingsErrorLoadingDataState).errorMessage)
                   : _buildLoadingLayout(),
             ),
           ),
@@ -59,6 +62,23 @@ class SettingsPage extends StatelessWidget {
               height: 12.0,
             ),
             CupertinoActivityIndicator()
+          ],
+        ),
+      );
+
+  Widget _buildErrorLayout(errorMessage) => Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            OneLineText(errorMessage),
+            SizedBox(
+              height: 12.0,
+            ),
+            Icon(
+              Icons.close,
+              size: 58,
+              color: kToastError,
+            )
           ],
         ),
       );

@@ -140,7 +140,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
   getDoctorSettingsData() {
     emit(SettingsLoadingDataInProgressState());
     ApiHelper.getInstance
-        .getDoctorSettingsData()
+        .getScheduleDoctorFixed()
         .then((_scheduleDoctorFixedModel) {
       this._doctorSettings = _scheduleDoctorFixedModel;
 
@@ -150,6 +150,8 @@ class SettingsCubit extends Cubit<SettingsStates> {
           this._doctorSettings.result.clinic.priceValue.toString() ?? '0';
 
       emit(SettingsLoadingDataSuccessState());
+    }).onError((errorMessage, stackTrace) {
+      emit(SettingsErrorLoadingDataState(errorMessage.toString()));
     });
   }
 

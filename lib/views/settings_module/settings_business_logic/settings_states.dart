@@ -4,6 +4,11 @@ class SettingsInitialState extends SettingsStates {}
 
 class SettingsLoadingDataInProgressState extends SettingsStates {}
 
+class SettingsErrorLoadingDataState extends SettingsStates {
+  final String errorMessage;
+  SettingsErrorLoadingDataState(this.errorMessage);
+}
+
 class SettingsLoadingDataSuccessState extends SettingsStates {}
 
 class SettingsChangeTabBarIndexState extends SettingsStates {}

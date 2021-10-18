@@ -12,7 +12,7 @@ class ApiHelper {
 
   static ApiHelper get getInstance => _instance;
 
-  Future<ScheduleDoctorFixedModel> getDoctorSettingsData() async {
+  Future<ScheduleDoctorFixedModel> getScheduleDoctorFixed() async {
     await checkInternetConnection();
     var parameters = {
       kAccessKey: ACCESS_KEY_VALUE,
