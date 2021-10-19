@@ -34,7 +34,7 @@ class ExaminationAndConfirmScheduleSection extends StatelessWidget {
           ),
           Row(
             children: [
-              CustomDropDownButton(
+              CustomDropDownWithoutUnderline(
                 value: SettingsCubit.get(context).examinationDropdownValue,
                 onChanged: (String newValue) => SettingsCubit.get(context)
                     .changeExaminationDropdownValue(newValue),
@@ -52,7 +52,7 @@ class ExaminationAndConfirmScheduleSection extends StatelessWidget {
               SizedBox(
                 width: 8.0,
               ),
-              CustomDropDownButton(
+              CustomDropDownWithoutUnderline(
                 value: SettingsCubit.get(context).confirmationScheduleValue,
                 onChanged: (String newValue) => SettingsCubit.get(context)
                     .changeConfirmationScheduleValue(newValue),

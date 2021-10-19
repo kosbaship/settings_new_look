@@ -12,7 +12,7 @@ import 'package:settings_new_look/views/settings_module/settings_views/settings_
 class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => BlocProvider(
-        create: (context) => SettingsCubit()..getDoctorSettingsData(),
+        create: (context) => SettingsCubit()..getScheduleDoctorFixed(),
         child: BlocConsumer<SettingsCubit, SettingsStates>(
           listener: (context, state) {},
           builder: (context, state) => DefaultTabController(

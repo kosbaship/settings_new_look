@@ -58,7 +58,7 @@ class WorkTimeListItem extends StatelessWidget {
             ),
             child: ExpansionTile(
               initiallyExpanded: int.tryParse(SettingsCubit.get(context)
-                          .doctorSettings
+                          .scheduleDoctorFixed
                           .result
                           .clinic
                           .workingDays[this.dayListItemIndex]
@@ -73,7 +73,7 @@ class WorkTimeListItem extends StatelessWidget {
                       border: Border(
                         bottom: BorderSide(
                             color: int.tryParse(SettingsCubit.get(context)
-                                        .doctorSettings
+                                        .scheduleDoctorFixed
                                         .result
                                         .clinic
                                         .workingDays[this.dayListItemIndex]
@@ -94,7 +94,7 @@ class WorkTimeListItem extends StatelessWidget {
                 ],
               ),
               trailing: int.tryParse(SettingsCubit.get(context)
-                          .doctorSettings
+                          .scheduleDoctorFixed
                           .result
                           .clinic
                           .workingDays[this.dayListItemIndex]
@@ -179,7 +179,7 @@ class WorkTimeListItem extends StatelessWidget {
                                 children: [
                                   OneLineText(
                                     SettingsCubit.get(context)
-                                        .doctorSettings
+                                        .scheduleDoctorFixed
                                         .result
                                         .clinic
                                         .workingDays[dayListItemIndex]
@@ -254,7 +254,7 @@ class WorkTimeListItem extends StatelessWidget {
                                 children: [
                                   OneLineText(
                                     SettingsCubit.get(context)
-                                        .doctorSettings
+                                        .scheduleDoctorFixed
                                         .result
                                         .clinic
                                         .workingDays[dayListItemIndex]
@@ -289,9 +289,9 @@ class WorkTimeListItem extends StatelessWidget {
                   SizedBox(
                     height: 12,
                   ),
-                  CustomDropDownButton2(
+                  CustomDropDownWithUnderLine(
                     value: SettingsCubit.get(context)
-                        .doctorSettings
+                        .scheduleDoctorFixed
                         .result
                         .clinic
                         .workingDays[dayListItemIndex]
@@ -328,7 +328,7 @@ class WorkTimeListItem extends StatelessWidget {
               ),
             ),
             SettingsCubit.get(context)
-                        .doctorSettings
+                        .scheduleDoctorFixed
                         .result
                         .clinic
                         .workingDays[dayListItemIndex]
@@ -401,7 +401,7 @@ class WorkTimeListItem extends StatelessWidget {
                                       children: [
                                         OneLineText(
                                           SettingsCubit.get(context)
-                                              .doctorSettings
+                                              .scheduleDoctorFixed
                                               .result
                                               .clinic
                                               .workingDays[dayListItemIndex]
@@ -481,7 +481,7 @@ class WorkTimeListItem extends StatelessWidget {
                                       children: [
                                         OneLineText(
                                           SettingsCubit.get(context)
-                                              .doctorSettings
+                                              .scheduleDoctorFixed
                                               .result
                                               .clinic
                                               .workingDays[dayListItemIndex]
@@ -517,9 +517,9 @@ class WorkTimeListItem extends StatelessWidget {
                         SizedBox(
                           height: 12,
                         ),
-                        CustomDropDownButton2(
+                        CustomDropDownWithUnderLine(
                           value: SettingsCubit.get(context)
-                              .doctorSettings
+                              .scheduleDoctorFixed
                               .result
                               .clinic
                               .workingDays[dayListItemIndex]

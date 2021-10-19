@@ -19,12 +19,12 @@ class OneLineText extends StatelessWidget {
       );
 }
 
-class CustomDropDownButton extends StatelessWidget {
+class CustomDropDownWithoutUnderline extends StatelessWidget {
   final String value;
   final List<DropdownMenuItem<String>> items;
   final void Function(String) onChanged;
 
-  CustomDropDownButton(
+  CustomDropDownWithoutUnderline(
       {@required this.value, @required this.items, @required this.onChanged});
 
   @override
@@ -52,12 +52,12 @@ class CustomDropDownButton extends StatelessWidget {
       );
 }
 
-class CustomDropDownButton2 extends StatelessWidget {
+class CustomDropDownWithUnderLine extends StatelessWidget {
   final String value;
   final List<DropdownMenuItem<String>> items;
   final void Function(String) onChanged;
 
-  CustomDropDownButton2(
+  CustomDropDownWithUnderLine(
       {@required this.value, @required this.items, @required this.onChanged});
 
   @override

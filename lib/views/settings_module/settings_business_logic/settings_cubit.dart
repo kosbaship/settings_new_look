@@ -11,7 +11,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
 
   static SettingsCubit get(context) => BlocProvider.of(context);
 
-  ScheduleDoctorFixedModel _doctorSettings;
+  ScheduleDoctorFixedModel _scheduleDoctorFixed;
 
   int tabBarIndex = 0;
 
@@ -23,6 +23,9 @@ class SettingsCubit extends Cubit<SettingsStates> {
   String examinationDropdownValue = kExaminationDropdownInitialValue;
 
   changeExaminationDropdownValue(examinationDropdownValue) {
+    print('====================');
+    print('$examinationDropdownValue');
+    print('====================');
     this.examinationDropdownValue = examinationDropdownValue;
     emit(SettingsChangeExaminationTypeState());
   }
@@ -41,14 +44,14 @@ class SettingsCubit extends Cubit<SettingsStates> {
       this.formKey.currentState.validate();
 
   activateDay(bool expandedTilesValue, index) {
-    this._doctorSettings.result.clinic.workingDays[index].wdayActiveDay =
+    this._scheduleDoctorFixed.result.clinic.workingDays[index].wdayActiveDay =
         expandedTilesValue ? 1.toString() : 0.toString();
     emit(SettingsChangeExpandedTilesValueState());
   }
 
   enableSecondShift(dayListItemIndex) {
     this
-        ._doctorSettings
+        ._scheduleDoctorFixed
         .result
         .clinic
         .workingDays[dayListItemIndex]
@@ -58,7 +61,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
 
   disableSecondShift(dayListItemIndex) {
     this
-        ._doctorSettings
+        ._scheduleDoctorFixed
         .result
         .clinic
         .workingDays[dayListItemIndex]
@@ -69,7 +72,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
   changeFirstShiftExaminationDurationDropdownValue(
       examinationDurationDropdownValue, dayListItemIndex) {
     this
-        ._doctorSettings
+        ._scheduleDoctorFixed
         .result
         .clinic
         .workingDays[dayListItemIndex]
@@ -80,7 +83,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
   changeSecondShiftExaminationDurationDropdownValue(
       examinationDurationDropdownValue, dayListItemIndex) {
     this
-        ._doctorSettings
+        ._scheduleDoctorFixed
         .result
         .clinic
         .workingDays[dayListItemIndex]
@@ -94,7 +97,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
     switch (shiftType) {
       case ShiftType.FirstShiftStart:
         this
-            ._doctorSettings
+            ._scheduleDoctorFixed
             .result
             .clinic
             .workingDays[dayListItemIndex]
@@ -102,7 +105,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
         break;
       case ShiftType.FirstShiftEnd:
         this
-            ._doctorSettings
+            ._scheduleDoctorFixed
             .result
             .clinic
             .workingDays[dayListItemIndex]
@@ -110,7 +113,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
         break;
       case ShiftType.SecondShiftStart:
         this
-            ._doctorSettings
+            ._scheduleDoctorFixed
             .result
             .clinic
             .workingDays[dayListItemIndex]
@@ -118,7 +121,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
         break;
       case ShiftType.SecondShiftEnd:
         this
-            ._doctorSettings
+            ._scheduleDoctorFixed
             .result
             .clinic
             .workingDays[dayListItemIndex]
@@ -137,17 +140,17 @@ class SettingsCubit extends Cubit<SettingsStates> {
     emit(SettingsSelectDateState());
   }
 
-  getDoctorSettingsData() {
+  getScheduleDoctorFixed() {
     emit(SettingsLoadingDataInProgressState());
     ApiHelper.getInstance
         .getScheduleDoctorFixed()
         .then((_scheduleDoctorFixedModel) {
-      this._doctorSettings = _scheduleDoctorFixedModel;
+      this._scheduleDoctorFixed = _scheduleDoctorFixedModel;
 
       /// Clinic => Fixed Dates
       //Examination Price
       this.examinationPriceController.text =
-          this._doctorSettings.result.clinic.priceValue.toString() ?? '0';
+          this._scheduleDoctorFixed.result.clinic.priceValue.toString() ?? '0';
 
       emit(SettingsLoadingDataSuccessState());
     }).onError((errorMessage, stackTrace) {
@@ -155,7 +158,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
     });
   }
 
-  ScheduleDoctorFixedModel get doctorSettings => _doctorSettings;
+  ScheduleDoctorFixedModel get scheduleDoctorFixed => _scheduleDoctorFixed;
 
   /// ======================================================
   saveAllTheSettings() {

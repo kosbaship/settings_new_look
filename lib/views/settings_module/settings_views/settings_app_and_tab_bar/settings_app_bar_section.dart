@@ -17,7 +17,7 @@ AppBar buildAppBarSection(BuildContext context) => AppBar(
         TextButton(
           onPressed: () async {
             // await ApiHelper.getInstance.getDoctorSettingsData();
-            SettingsCubit.get(context).getDoctorSettingsData();
+            SettingsCubit.get(context).getScheduleDoctorFixed();
             //  SettingsCubit.get(context).saveAllTheSettings();
           },
           child: OneLineText(
