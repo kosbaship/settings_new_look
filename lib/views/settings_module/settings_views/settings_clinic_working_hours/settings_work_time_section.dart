@@ -58,7 +58,7 @@ class WorkTimeListItem extends StatelessWidget {
             ),
             child: ExpansionTile(
               initiallyExpanded: int.tryParse(SettingsCubit.get(context)
-                          .scheduleDoctorFixed
+                          .doctorSchedule
                           .result
                           .fixedDate
                           .fdClinic
@@ -74,7 +74,7 @@ class WorkTimeListItem extends StatelessWidget {
                       border: Border(
                         bottom: BorderSide(
                             color: int.tryParse(SettingsCubit.get(context)
-                                        .scheduleDoctorFixed
+                                        .doctorSchedule
                                         .result
                                         .fixedDate
                                         .fdClinic
@@ -96,7 +96,7 @@ class WorkTimeListItem extends StatelessWidget {
                 ],
               ),
               trailing: int.tryParse(SettingsCubit.get(context)
-                          .scheduleDoctorFixed
+                          .doctorSchedule
                           .result
                           .fixedDate
                           .fdClinic
@@ -182,7 +182,7 @@ class WorkTimeListItem extends StatelessWidget {
                                 children: [
                                   OneLineText(
                                     SettingsCubit.get(context)
-                                        .scheduleDoctorFixed
+                                        .doctorSchedule
                                         .result
                                         .fixedDate
                                         .fdClinic
@@ -258,7 +258,7 @@ class WorkTimeListItem extends StatelessWidget {
                                 children: [
                                   OneLineText(
                                     SettingsCubit.get(context)
-                                        .scheduleDoctorFixed
+                                        .doctorSchedule
                                         .result
                                         .fixedDate
                                         .fdClinic
@@ -296,7 +296,7 @@ class WorkTimeListItem extends StatelessWidget {
                   ),
                   CustomDropDownWithUnderLine(
                     value: SettingsCubit.get(context)
-                        .scheduleDoctorFixed
+                        .doctorSchedule
                         .result
                         .fixedDate
                         .fdClinic
@@ -334,7 +334,7 @@ class WorkTimeListItem extends StatelessWidget {
               ),
             ),
             SettingsCubit.get(context)
-                        .scheduleDoctorFixed
+                        .doctorSchedule
                         .result
                         .fixedDate
                         .fdClinic
@@ -408,7 +408,7 @@ class WorkTimeListItem extends StatelessWidget {
                                       children: [
                                         OneLineText(
                                           SettingsCubit.get(context)
-                                              .scheduleDoctorFixed
+                                              .doctorSchedule
                                               .result
                                               .fixedDate
                                               .fdClinic
@@ -489,7 +489,7 @@ class WorkTimeListItem extends StatelessWidget {
                                       children: [
                                         OneLineText(
                                           SettingsCubit.get(context)
-                                              .scheduleDoctorFixed
+                                              .doctorSchedule
                                               .result
                                               .fixedDate
                                               .fdClinic
@@ -528,7 +528,7 @@ class WorkTimeListItem extends StatelessWidget {
                         ),
                         CustomDropDownWithUnderLine(
                           value: SettingsCubit.get(context)
-                              .scheduleDoctorFixed
+                              .doctorSchedule
                               .result
                               .fixedDate
                               .fdClinic
