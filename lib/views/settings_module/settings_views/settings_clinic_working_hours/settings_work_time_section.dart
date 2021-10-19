@@ -9,10 +9,57 @@ import 'package:settings_new_look/utilities/app_helper_methods.dart';
 import 'package:settings_new_look/utilities/app_strings.dart';
 import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_cubit.dart';
 
-class WorkTimeSection extends StatelessWidget {
+class PriceAndWorkTime extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Column(
         children: [
+          const SizedBox(
+            height: 16.0,
+          ),
+          Container(
+            width: double.infinity,
+            padding:
+                const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12.0),
+                border: Border.all(color: kAppBorderColor)),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    SvgPicture.asset(kFeesSVG),
+                    SizedBox(
+                      width: 16.0,
+                    ),
+                    OneLineText(
+                      kFees,
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline5
+                          .copyWith(fontSize: 16),
+                    )
+                  ],
+                ),
+                Container(
+                  width: 200,
+                  child: CustomTextFormField(
+                    controller:
+                        SettingsCubit.get(context).examinationPriceController,
+                    hintText: 'Examination price (EGP)',
+                    validator: (String value) => value.isEmpty
+                        ? 'please write your examination price'
+                        : null,
+                  ),
+                ),
+                const SizedBox(
+                  height: 8.0,
+                )
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 20.0,
+          ),
           Row(
             children: [
               SvgPicture.asset(kFeesSVG),
@@ -58,13 +105,21 @@ class WorkTimeListItem extends StatelessWidget {
             ),
             child: ExpansionTile(
               initiallyExpanded: int.tryParse(SettingsCubit.get(context)
-                          .doctorSchedule
-                          .result
-                          .fixedDate
-                          .fdClinic
-                          .fdWorkingDays[this.dayListItemIndex]
-                          .fdWdayActiveDay) ==
-                      1
+                              .doctorSchedule
+                              .result
+                              .fixedDate
+                              .fdClinic
+                              .fdWorkingDays[this.dayListItemIndex]
+                              .fdWdayActiveDay) ==
+                          1 &&
+                      int.tryParse(SettingsCubit.get(context)
+                              .doctorSchedule
+                              .result
+                              .fixedDate
+                              .fdClinic
+                              .fdWorkingDays[this.dayListItemIndex]
+                              .fdWdayActiveDay) !=
+                          null
                   ? true
                   : false,
               title: Row(
