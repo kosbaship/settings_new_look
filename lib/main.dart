@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:settings_new_look/utilities/app_configurations.dart';
 import 'package:settings_new_look/utilities/app_theme.dart';
-import 'package:settings_new_look/views/settings_module/settings_views/settings_layout.dart';
+import 'package:settings_new_look/views/settings_module/settings_views/doctor_schedule_layout.dart';
 
 void main() {
   setupAppConfigurations();

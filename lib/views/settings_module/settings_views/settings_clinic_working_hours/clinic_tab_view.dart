@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_cubit.dart';
-import 'package:settings_new_look/views/settings_module/settings_views/settings_clinic_working_hours/settings_examination_and_schedule_section.dart';
-import 'package:settings_new_look/views/settings_module/settings_views/settings_clinic_working_hours/settings_work_time_section.dart';
+import 'package:settings_new_look/views/settings_module/settings_views/settings_clinic_working_hours/schedule_widgets.dart';
 
 class ClinicWorkingHours extends StatelessWidget {
   @override
@@ -14,8 +13,9 @@ class ClinicWorkingHours extends StatelessWidget {
             physics: BouncingScrollPhysics(),
             child: Column(
               children: [
-                ExaminationAndConfirmation(),
-                PriceAndWorkTime(),
+                ClinicTabView(),
+                FeesSection(),
+                WorkTimeSection(),
               ],
             ),
           ),
