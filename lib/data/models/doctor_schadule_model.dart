@@ -51,7 +51,7 @@ class FdClinic {
     fdConfirmSchedule = json['fd_confirm_schedule'];
     fdPriceValue = json['fd_priceValue'];
     if (json['fd_working_days'] != null) {
-      fdWorkingDays = new List<FdWorkingDays>();
+      fdWorkingDays = <FdWorkingDays>[];
       json['fd_working_days'].forEach((v) {
         fdWorkingDays.add(new FdWorkingDays.fromJson(v));
       });
@@ -104,7 +104,7 @@ class FdCall {
     fdPriceSpot = json['fd_priceSpot'];
     fdActiveSpot = json['fd_activeSpot'];
     if (json['fd_working_days'] != null) {
-      fdWorkingDays = new List<FdWorkingDays>();
+      fdWorkingDays = <FdWorkingDays>[];
       json['fd_working_days'].forEach((v) {
         fdWorkingDays.add(new FdWorkingDays.fromJson(v));
       });
@@ -133,7 +133,7 @@ class FnClinic {
     fnConfirmSchedule = json['fn_confirm_schedule'];
     fnPriceValue = json['fn_priceValue'];
     if (json['fn_working_days'] != null) {
-      fnWorkingDays = new List<FnWorkingDays>();
+      fnWorkingDays = <FnWorkingDays>[];
       json['fn_working_days'].forEach((v) {
         fnWorkingDays.add(new FnWorkingDays.fromJson(v));
       });

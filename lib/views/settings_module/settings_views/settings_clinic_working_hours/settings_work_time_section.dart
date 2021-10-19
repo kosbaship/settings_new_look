@@ -60,9 +60,10 @@ class WorkTimeListItem extends StatelessWidget {
               initiallyExpanded: int.tryParse(SettingsCubit.get(context)
                           .scheduleDoctorFixed
                           .result
-                          .clinic
-                          .workingDays[this.dayListItemIndex]
-                          .wdayActiveDay) ==
+                          .fixedDate
+                          .fdClinic
+                          .fdWorkingDays[this.dayListItemIndex]
+                          .fdWdayActiveDay) ==
                       1
                   ? true
                   : false,
@@ -75,9 +76,10 @@ class WorkTimeListItem extends StatelessWidget {
                             color: int.tryParse(SettingsCubit.get(context)
                                         .scheduleDoctorFixed
                                         .result
-                                        .clinic
-                                        .workingDays[this.dayListItemIndex]
-                                        .wdayActiveDay) ==
+                                        .fixedDate
+                                        .fdClinic
+                                        .fdWorkingDays[this.dayListItemIndex]
+                                        .fdWdayActiveDay) ==
                                     1
                                 ? kAppDefaultColor
                                 : kAppWhiteColor,
@@ -96,9 +98,10 @@ class WorkTimeListItem extends StatelessWidget {
               trailing: int.tryParse(SettingsCubit.get(context)
                           .scheduleDoctorFixed
                           .result
-                          .clinic
-                          .workingDays[this.dayListItemIndex]
-                          .wdayActiveDay) ==
+                          .fixedDate
+                          .fdClinic
+                          .fdWorkingDays[this.dayListItemIndex]
+                          .fdWdayActiveDay) ==
                       1
                   ? SvgPicture.asset(kActiveCupertinoSwitchSVG)
                   : SvgPicture.asset(kUnActiveCupertinoSwitchSVG),
@@ -181,9 +184,10 @@ class WorkTimeListItem extends StatelessWidget {
                                     SettingsCubit.get(context)
                                         .scheduleDoctorFixed
                                         .result
-                                        .clinic
-                                        .workingDays[dayListItemIndex]
-                                        .wdayFrom,
+                                        .fixedDate
+                                        .fdClinic
+                                        .fdWorkingDays[dayListItemIndex]
+                                        .fdWdayFrom,
                                     style:
                                         Theme.of(context).textTheme.headline5,
                                   ),
@@ -256,9 +260,10 @@ class WorkTimeListItem extends StatelessWidget {
                                     SettingsCubit.get(context)
                                         .scheduleDoctorFixed
                                         .result
-                                        .clinic
-                                        .workingDays[dayListItemIndex]
-                                        .wdayTo,
+                                        .fixedDate
+                                        .fdClinic
+                                        .fdWorkingDays[dayListItemIndex]
+                                        .fdWdayTo,
                                     style:
                                         Theme.of(context).textTheme.headline5,
                                   ),
@@ -293,9 +298,10 @@ class WorkTimeListItem extends StatelessWidget {
                     value: SettingsCubit.get(context)
                         .scheduleDoctorFixed
                         .result
-                        .clinic
-                        .workingDays[dayListItemIndex]
-                        .wdayDuration,
+                        .fixedDate
+                        .fdClinic
+                        .fdWorkingDays[dayListItemIndex]
+                        .fdWdayDuration,
                     onChanged: (String newValue) => SettingsCubit.get(context)
                         .changeFirstShiftExaminationDurationDropdownValue(
                             newValue, dayListItemIndex),
@@ -330,9 +336,10 @@ class WorkTimeListItem extends StatelessWidget {
             SettingsCubit.get(context)
                         .scheduleDoctorFixed
                         .result
-                        .clinic
-                        .workingDays[dayListItemIndex]
-                        .wdayActiveShift ==
+                        .fixedDate
+                        .fdClinic
+                        .fdWorkingDays[dayListItemIndex]
+                        .fdWdayActiveShift ==
                     1.toString()
                 ? Container(
                     height: kOneShiftItemHeight,
@@ -403,9 +410,10 @@ class WorkTimeListItem extends StatelessWidget {
                                           SettingsCubit.get(context)
                                               .scheduleDoctorFixed
                                               .result
-                                              .clinic
-                                              .workingDays[dayListItemIndex]
-                                              .wdayFrom2,
+                                              .fixedDate
+                                              .fdClinic
+                                              .fdWorkingDays[dayListItemIndex]
+                                              .fdWdayFrom2,
                                           style: Theme.of(context)
                                               .textTheme
                                               .headline5,
@@ -483,9 +491,10 @@ class WorkTimeListItem extends StatelessWidget {
                                           SettingsCubit.get(context)
                                               .scheduleDoctorFixed
                                               .result
-                                              .clinic
-                                              .workingDays[dayListItemIndex]
-                                              .wdayTo2,
+                                              .fixedDate
+                                              .fdClinic
+                                              .fdWorkingDays[dayListItemIndex]
+                                              .fdWdayTo2,
                                           style: Theme.of(context)
                                               .textTheme
                                               .headline5,
@@ -521,9 +530,10 @@ class WorkTimeListItem extends StatelessWidget {
                           value: SettingsCubit.get(context)
                               .scheduleDoctorFixed
                               .result
-                              .clinic
-                              .workingDays[dayListItemIndex]
-                              .wdayDuration2,
+                              .fixedDate
+                              .fdClinic
+                              .fdWorkingDays[dayListItemIndex]
+                              .fdWdayDuration2,
                           onChanged: (String newValue) => SettingsCubit.get(
                                   context)
                               .changeSecondShiftExaminationDurationDropdownValue(

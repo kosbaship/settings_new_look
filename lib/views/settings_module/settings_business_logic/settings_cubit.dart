@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:settings_new_look/data/models/schadule_doctor_fixed_model.dart';
+import 'package:settings_new_look/data/models/doctor_schadule_model.dart';
 import 'package:settings_new_look/data/remote/api_helper.dart';
 import 'package:settings_new_look/utilities/app_enums.dart';
 import 'package:settings_new_look/utilities/app_strings.dart';
@@ -11,7 +11,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
 
   static SettingsCubit get(context) => BlocProvider.of(context);
 
-  ScheduleDoctorFixedModel _scheduleDoctorFixed;
+  DoctorScheduleData _scheduleDoctorFixed;
 
   int tabBarIndex = 0;
 
@@ -44,8 +44,13 @@ class SettingsCubit extends Cubit<SettingsStates> {
       this.formKey.currentState.validate();
 
   activateDay(bool expandedTilesValue, index) {
-    this._scheduleDoctorFixed.result.clinic.workingDays[index].wdayActiveDay =
-        expandedTilesValue ? 1.toString() : 0.toString();
+    this
+        ._scheduleDoctorFixed
+        .result
+        .fixedDate
+        .fdClinic
+        .fdWorkingDays[index]
+        .fdWdayActiveDay = expandedTilesValue ? 1.toString() : 0.toString();
     emit(SettingsChangeExpandedTilesValueState());
   }
 
@@ -53,9 +58,10 @@ class SettingsCubit extends Cubit<SettingsStates> {
     this
         ._scheduleDoctorFixed
         .result
-        .clinic
-        .workingDays[dayListItemIndex]
-        .wdayActiveShift = 1.toString();
+        .fixedDate
+        .fdClinic
+        .fdWorkingDays[dayListItemIndex]
+        .fdWdayActiveShift = 1.toString();
     emit(SettingsEnableSecondShiftDurationState());
   }
 
@@ -63,9 +69,10 @@ class SettingsCubit extends Cubit<SettingsStates> {
     this
         ._scheduleDoctorFixed
         .result
-        .clinic
-        .workingDays[dayListItemIndex]
-        .wdayActiveShift = 0.toString();
+        .fixedDate
+        .fdClinic
+        .fdWorkingDays[dayListItemIndex]
+        .fdWdayActiveShift = 0.toString();
     emit(SettingsDisableSecondShiftDurationState());
   }
 
@@ -74,9 +81,10 @@ class SettingsCubit extends Cubit<SettingsStates> {
     this
         ._scheduleDoctorFixed
         .result
-        .clinic
-        .workingDays[dayListItemIndex]
-        .wdayDuration = examinationDurationDropdownValue;
+        .fixedDate
+        .fdClinic
+        .fdWorkingDays[dayListItemIndex]
+        .fdWdayDuration = examinationDurationDropdownValue;
     emit(SettingsChangeExaminationDurationState());
   }
 
@@ -85,9 +93,10 @@ class SettingsCubit extends Cubit<SettingsStates> {
     this
         ._scheduleDoctorFixed
         .result
-        .clinic
-        .workingDays[dayListItemIndex]
-        .wdayDuration2 = examinationDurationDropdownValue;
+        .fixedDate
+        .fdClinic
+        .fdWorkingDays[dayListItemIndex]
+        .fdWdayDuration2 = examinationDurationDropdownValue;
     emit(SettingsChangeExaminationDurationState());
   }
 
@@ -99,33 +108,33 @@ class SettingsCubit extends Cubit<SettingsStates> {
         this
             ._scheduleDoctorFixed
             .result
-            .clinic
-            .workingDays[dayListItemIndex]
-            .wdayFrom = '${fullDatTime.hour}:${fullDatTime.minute}';
+            .fixedDate
+            .fdClinic
+            .fdWorkingDays[dayListItemIndex]
+            .fdWdayFrom = '${fullDatTime.hour}:${fullDatTime.minute}';
         break;
       case ShiftType.FirstShiftEnd:
         this
             ._scheduleDoctorFixed
             .result
-            .clinic
-            .workingDays[dayListItemIndex]
-            .wdayTo = '${fullDatTime.hour}:${fullDatTime.minute}';
+            .fixedDate
+            .fdClinic
+            .fdWorkingDays[dayListItemIndex]
+            .fdWdayTo = '${fullDatTime.hour}:${fullDatTime.minute}';
         break;
       case ShiftType.SecondShiftStart:
-        this
-            ._scheduleDoctorFixed
-            .result
-            .clinic
-            .workingDays[dayListItemIndex]
-            .wdayFrom2 = '${fullDatTime.hour}:${fullDatTime.minute}';
+        this._scheduleDoctorFixed.result
+          ..fixedDate.fdClinic.fdWorkingDays[dayListItemIndex].fdWdayFrom2 =
+              '${fullDatTime.hour}:${fullDatTime.minute}';
         break;
       case ShiftType.SecondShiftEnd:
         this
             ._scheduleDoctorFixed
             .result
-            .clinic
-            .workingDays[dayListItemIndex]
-            .wdayTo2 = '${fullDatTime.hour}:${fullDatTime.minute}';
+            .fixedDate
+            .fdClinic
+            .fdWorkingDays[dayListItemIndex]
+            .fdWdayTo2 = '${fullDatTime.hour}:${fullDatTime.minute}';
         break;
       default:
         break;
@@ -149,8 +158,14 @@ class SettingsCubit extends Cubit<SettingsStates> {
 
       /// Clinic => Fixed Dates
       //Examination Price
-      this.examinationPriceController.text =
-          this._scheduleDoctorFixed.result.clinic.priceValue.toString() ?? '0';
+      this.examinationPriceController.text = this
+              ._scheduleDoctorFixed
+              .result
+              .fixedDate
+              .fdClinic
+              .fdPriceValue
+              .toString() ??
+          '0';
 
       emit(SettingsLoadingDataSuccessState());
     }).onError((errorMessage, stackTrace) {
@@ -158,7 +173,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
     });
   }
 
-  ScheduleDoctorFixedModel get scheduleDoctorFixed => _scheduleDoctorFixed;
+  DoctorScheduleData get scheduleDoctorFixed => _scheduleDoctorFixed;
 
   /// ======================================================
   saveAllTheSettings() {

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:settings_new_look/data/models/schadule_doctor_fixed_model.dart';
+import 'package:settings_new_look/data/models/doctor_schadule_model.dart';
 import 'package:settings_new_look/utilities/app_exceptions.dart';
 import 'package:settings_new_look/utilities/app_strings.dart';
 
@@ -12,7 +12,7 @@ class ApiHelper {
 
   static ApiHelper get getInstance => _instance;
 
-  Future<ScheduleDoctorFixedModel> getScheduleDoctorFixed() async {
+  Future<DoctorScheduleData> getScheduleDoctorFixed() async {
     await checkInternetConnection();
     var parameters = {
       kAccessKey: ACCESS_KEY_VALUE,
@@ -21,17 +21,16 @@ class ApiHelper {
       // =========================================> will be changed in the production
     };
 
-    http.Response response =
-        await http.post(Uri.parse(GET_DOCTOR_END_POINT), body: parameters);
-    ScheduleDoctorFixedModel doctorSettings;
+    http.Response response = await http
+        .post(Uri.parse(GET_DOCTOR_SCHEDULE_END_POINT), body: parameters);
+    DoctorScheduleData doctorSettings;
     switch (response.statusCode) {
       case 200:
-        doctorSettings =
-            ScheduleDoctorFixedModel.fromJson(jsonDecode(response.body));
+        doctorSettings = DoctorScheduleData.fromJson(jsonDecode(response.body));
         print('Status ${doctorSettings.status}');
         print(doctorSettings.subMessage);
         print(doctorSettings.message);
-        print(doctorSettings.result.examinationType);
+        print(doctorSettings.result.fixedDate.fdClinic.fdVendorAppointType);
         return doctorSettings;
         break;
       case 404:
