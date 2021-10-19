@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_conditional_rendering/flutter_conditional_rendering.dart';
 import 'package:settings_new_look/utilities/app_colors.dart';
 import 'package:settings_new_look/utilities/app_components.dart';
 import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_cubit.dart';
@@ -20,12 +21,22 @@ class SettingsPage extends StatelessWidget {
             child: Scaffold(
               backgroundColor: kAppBackgroundColor,
               appBar: buildAppBarSection(context),
-              body: state is! SettingsLoadingDataInProgressState
-                  ? state is! SettingsErrorLoadingDataState
-                      ? _buildSettingScreenLayout(context)
-                      : _buildErrorLayout(
-                          (state as SettingsErrorLoadingDataState).errorMessage)
-                  : _buildLoadingLayout(),
+              body: Conditional.single(
+                  context: context,
+                  conditionBuilder: (context) =>
+                      state is! SettingsLoadingDataInProgressState,
+                  widgetBuilder: (context) => Conditional.single(
+                        context: context,
+                        conditionBuilder: (BuildContext context) =>
+                            state is! SettingsErrorLoadingDataState,
+                        widgetBuilder: (BuildContext context) =>
+                            _buildSettingScreenLayout(context),
+                        fallbackBuilder: (BuildContext context) =>
+                            _buildErrorLayout(
+                                (state as SettingsErrorLoadingDataState)
+                                    .errorMessage),
+                      ),
+                  fallbackBuilder: (context) => _buildLoadingLayout()),
             ),
           ),
         ),
