@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_cubit.dart';
-import 'package:settings_new_look/views/settings_module/settings_views/settings_clinic_working_hours/schedule_widgets.dart';
+import 'package:settings_new_look/views/settings_module/schedule_cubit/settings_cubit.dart';
+import 'package:settings_new_look/views/settings_module/schedule_views/schedule_clinic_working_hours/schedule_widgets.dart';
 
 class ClinicWorkingHours extends StatelessWidget {
   @override

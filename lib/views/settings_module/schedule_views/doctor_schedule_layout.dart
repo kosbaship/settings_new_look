@@ -4,12 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_conditional_rendering/flutter_conditional_rendering.dart';
 import 'package:settings_new_look/utilities/app_colors.dart';
 import 'package:settings_new_look/utilities/app_components.dart';
-import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_cubit.dart';
-import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_states.dart';
-import 'package:settings_new_look/views/settings_module/settings_views/settings_clinic_working_hours/clinic_tab_view.dart';
-import 'package:settings_new_look/views/settings_module/settings_views/settings_clinic_working_hours/schedule_widgets.dart';
+import 'package:settings_new_look/views/settings_module/schedule_cubit/settings_cubit.dart';
+import 'package:settings_new_look/views/settings_module/schedule_cubit/settings_states.dart';
+import 'package:settings_new_look/views/settings_module/schedule_views/schedule_clinic_working_hours/clinic_tab_view.dart';
+import 'package:settings_new_look/views/settings_module/schedule_views/schedule_clinic_working_hours/schedule_widgets.dart';
 
-class SettingsPage extends StatelessWidget {
+class ScheduleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => BlocProvider(
         create: (context) => SettingsCubit()..getScheduleDoctorFixed(),

@@ -4,7 +4,7 @@ import 'package:settings_new_look/data/models/doctor_schadule_model.dart';
 import 'package:settings_new_look/data/remote/api_helper.dart';
 import 'package:settings_new_look/utilities/app_enums.dart';
 import 'package:settings_new_look/utilities/app_strings.dart';
-import 'package:settings_new_look/views/settings_module/settings_business_logic/settings_states.dart';
+import 'package:settings_new_look/views/settings_module/schedule_cubit/settings_states.dart';
 
 class SettingsCubit extends Cubit<SettingsStates> {
   SettingsCubit() : super(SettingsInitialState());
