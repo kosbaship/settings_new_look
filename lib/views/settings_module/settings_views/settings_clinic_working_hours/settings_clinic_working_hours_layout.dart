@@ -13,18 +13,11 @@ class ClinicWorkingHours extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 12.0),
           child: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
-            child: Container(
-              // color: Colors.red,
-
-              /// TODO: Logic to make the whole list scrollable
-
-              height: 4500,
-              child: Column(
-                children: [
-                  ExaminationAndConfirmScheduleSection(),
-                  WorkTimeSection()
-                ],
-              ),
+            child: Column(
+              children: [
+                ExaminationAndConfirmScheduleSection(),
+                WorkTimeSection()
+              ],
             ),
           ),
         ),

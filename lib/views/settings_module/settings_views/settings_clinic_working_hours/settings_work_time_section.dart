@@ -11,36 +11,32 @@ import 'package:settings_new_look/views/settings_module/settings_business_logic/
 
 class WorkTimeSection extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => Expanded(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                SvgPicture.asset(kFeesSVG),
-                SizedBox(
-                  width: 16.0,
-                ),
-                OneLineText(
-                  kWorkTime,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline5
-                      .copyWith(fontSize: 16),
-                )
-              ],
-            ),
-            Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) => WorkTimeListItem(
-                  dayListItemIndex: index,
-                ),
-                itemCount: kDaysOfTheWeek.length,
+  Widget build(BuildContext context) => Column(
+        children: [
+          Row(
+            children: [
+              SvgPicture.asset(kFeesSVG),
+              SizedBox(
+                width: 16.0,
               ),
-            )
-          ],
-        ),
+              OneLineText(
+                kWorkTime,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline5
+                    .copyWith(fontSize: 16),
+              )
+            ],
+          ),
+          ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) => WorkTimeListItem(
+              dayListItemIndex: index,
+            ),
+            itemCount: kDaysOfTheWeek.length,
+          )
+        ],
       );
 }
 
