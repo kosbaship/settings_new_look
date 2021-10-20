@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_conditional_rendering/conditional.dart';
 import 'package:settings_new_look/views/settings_module/schedule_cubit/settings_cubit.dart';
 import 'package:settings_new_look/views/settings_module/schedule_views/schedule_clinic_working_hours/schedule_widgets.dart';
 
@@ -14,7 +15,14 @@ class ClinicWorkingHours extends StatelessWidget {
             child: Column(
               children: [
                 ClinicTabView(),
-                FeesSection(),
+                Conditional.single(
+                  context: context,
+                  conditionBuilder: (context) => true,
+                  widgetBuilder: (context) {
+                    return FeesSection();
+                  },
+                  fallbackBuilder: (context) => FeesSection(),
+                ),
                 WorkTimeSection(),
               ],
             ),
