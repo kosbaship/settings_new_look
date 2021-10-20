@@ -21,21 +21,20 @@ class ScheduleScreen extends StatelessWidget {
               backgroundColor: kAppBackgroundColor,
               appBar: buildAppBarView(context),
               body: Conditional.single(
+                context: context,
+                conditionBuilder: (context) =>
+                    state is! SettingsLoadingDataInProgressState,
+                widgetBuilder: (context) => Conditional.single(
                   context: context,
-                  conditionBuilder: (context) =>
-                      state is! SettingsLoadingDataInProgressState,
-                  widgetBuilder: (context) => Conditional.single(
-                        context: context,
-                        conditionBuilder: (BuildContext context) =>
-                            state is! SettingsErrorLoadingDataState,
-                        widgetBuilder: (BuildContext context) =>
-                            _buildSettingScreenLayout(context),
-                        fallbackBuilder: (BuildContext context) =>
-                            _buildErrorLayout(
-                                (state as SettingsErrorLoadingDataState)
-                                    .errorMessage),
-                      ),
-                  fallbackBuilder: (context) => _buildLoadingLayout()),
+                  conditionBuilder: (BuildContext context) =>
+                      state is! SettingsErrorLoadingDataState,
+                  widgetBuilder: (BuildContext context) =>
+                      _buildSettingScreenLayout(context),
+                  fallbackBuilder: (BuildContext context) => _buildErrorLayout(
+                      (state as SettingsErrorLoadingDataState).errorMessage),
+                ),
+                fallbackBuilder: (context) => _buildLoadingLayout(),
+              ),
             ),
           ),
         ),
