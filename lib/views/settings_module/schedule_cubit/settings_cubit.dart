@@ -11,17 +11,14 @@ class SettingsCubit extends Cubit<SettingsStates> {
 
   static SettingsCubit get(context) => BlocProvider.of(context);
 
-  DoctorScheduleData _doctorSchedule;
-
+  /// =================== handle tab bar and selection ========================
   int tabBarIndex = 0;
-
   changeTabBarIndex(index) {
     this.tabBarIndex = index;
     emit(SettingsChangeTabBarIndexState());
   }
 
   String examinationDropdownValue = kExaminationDropdownInitialValue;
-
   changeExaminationDropdownValue(examinationDropdownValue) {
     print('====================');
     print('$examinationDropdownValue');
@@ -31,18 +28,18 @@ class SettingsCubit extends Cubit<SettingsStates> {
   }
 
   String confirmationScheduleValue = kConfirmationScheduleDropdownInitialValue;
-
   changeConfirmationScheduleValue(confirmationScheduleValue) {
     this.confirmationScheduleValue = confirmationScheduleValue;
     emit(SettingsConfirmationScheduleTypeState());
   }
 
   final formKey = GlobalKey<FormState>();
-  TextEditingController examinationPriceController = TextEditingController();
-
   _checkExaminationPriceTextFieldValidation() =>
       this.formKey.currentState.validate();
 
+  /// ================= handle fixed dates ========================
+  TextEditingController fixedDatesExaminationPriceController =
+      TextEditingController();
   activateDay(bool expandedTilesValue, index) {
     this
         ._doctorSchedule
@@ -101,7 +98,6 @@ class SettingsCubit extends Cubit<SettingsStates> {
   }
 
   DateTime fullDatTime = DateTime.now();
-
   confirmSelectedDate(dayListItemIndex, ShiftType shiftType) {
     switch (shiftType) {
       case ShiftType.FirstShiftStart:
@@ -149,7 +145,13 @@ class SettingsCubit extends Cubit<SettingsStates> {
     emit(SettingsSelectDateState());
   }
 
-  getScheduleDoctorFixed() {
+  /// ================= handle first in first out ========================
+  TextEditingController firstInFirstOutExaminationPriceController =
+      TextEditingController();
+
+  /// ========= get data from the server =======================
+  DoctorScheduleData _doctorSchedule;
+  getScheduleDoctor() {
     emit(SettingsLoadingDataInProgressState());
     ApiHelper.getInstance
         .getScheduleDoctorFixed()
@@ -158,12 +160,23 @@ class SettingsCubit extends Cubit<SettingsStates> {
 
       /// Clinic => Fixed Dates
       //Examination Price
-      this.examinationPriceController.text = this
+      this.fixedDatesExaminationPriceController.text = this
               ._doctorSchedule
               .result
               .fixedDate
               .fdClinic
               .fdPriceValue
+              .toString() ??
+          '0';
+
+      /// Clinic => First In First Out Dates
+      //Examination Price
+      this.firstInFirstOutExaminationPriceController.text = this
+              ._doctorSchedule
+              .result
+              .firstInFirstOut
+              .fnClinic
+              .fnPriceValue
               .toString() ??
           '0';
 

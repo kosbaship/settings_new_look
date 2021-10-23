@@ -12,7 +12,7 @@ import 'package:settings_new_look/views/settings_module/schedule_views/schedule_
 class ScheduleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => BlocProvider(
-        create: (context) => SettingsCubit()..getScheduleDoctorFixed(),
+        create: (context) => SettingsCubit()..getScheduleDoctor(),
         child: BlocConsumer<SettingsCubit, SettingsStates>(
           listener: (context, state) {},
           builder: (context, state) => DefaultTabController(

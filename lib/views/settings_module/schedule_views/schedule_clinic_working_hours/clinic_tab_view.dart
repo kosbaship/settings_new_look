@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_conditional_rendering/conditional.dart';
+import 'package:settings_new_look/utilities/app_strings.dart';
 import 'package:settings_new_look/views/settings_module/schedule_cubit/settings_cubit.dart';
 import 'package:settings_new_look/views/settings_module/schedule_views/schedule_clinic_working_hours/schedule_widgets.dart';
 
@@ -17,16 +18,24 @@ class ClinicWorkingHours extends StatelessWidget {
                 ClinicTabView(),
                 Conditional.single(
                   context: context,
-                  conditionBuilder: (context) => true,
-                  widgetBuilder: (context) {
-                    return FeesSection();
-                  },
-                  fallbackBuilder: (context) => FeesSection(),
+                  conditionBuilder: (context) =>
+                      SettingsCubit.get(context).examinationDropdownValue ==
+                      kExaminationDropdownInitialValue,
+                  widgetBuilder: (context) => _drawFixedDatesView(context),
+                  fallbackBuilder: (context) =>
+                      _drawFirstInFirstOutView(context),
                 ),
-                WorkTimeSection(),
               ],
             ),
           ),
         ),
+      );
+
+  Widget _drawFixedDatesView(BuildContext context) => Column(
+        children: [FixedDatesFees(), FixedDatesWorkTime()],
+      );
+
+  Widget _drawFirstInFirstOutView(BuildContext context) => Column(
+        children: [FirstInFirstOutFees()],
       );
 }
