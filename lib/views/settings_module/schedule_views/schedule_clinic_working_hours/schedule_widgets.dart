@@ -36,19 +36,16 @@ AppBar buildAppBarView(BuildContext context) => AppBar(
 
 class ClinicTabBar extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: TabBar(
-          onTap: (index) => SettingsCubit.get(context).changeTabBarIndex(index),
-          tabs: [
-            SettingsCubit.get(context).tabBarIndex == 0
-                ? buildActiveClinicTab(context)
-                : buildUnActiveClinicTab(context),
-            SettingsCubit.get(context).tabBarIndex == 1
-                ? buildActiveCallTab(context)
-                : buildUnActiveCallTab(context),
-          ],
-        ),
+  Widget build(BuildContext context) => TabBar(
+        onTap: (index) => SettingsCubit.get(context).changeTabBarIndex(index),
+        tabs: [
+          SettingsCubit.get(context).tabBarIndex == 0
+              ? buildActiveClinicTab(context)
+              : buildUnActiveClinicTab(context),
+          SettingsCubit.get(context).tabBarIndex == 1
+              ? buildActiveCallTab(context)
+              : buildUnActiveCallTab(context),
+        ],
       );
   Widget buildActiveClinicTab(BuildContext context) => Tab(
         child: Row(

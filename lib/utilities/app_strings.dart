@@ -19,7 +19,7 @@ const List<String> kDaysOfTheWeek = [
 ];
 
 const String kToastWarningText = 'Be Careful we still Developing';
-const String kClinicWorkingHours = 'Clinic working hour';
+const String kClinicWorkingHours = 'Clinic timings';
 const String kCallTimings = 'Call timings';
 const String kAddShift = 'add Shift';
 const String kRemoveShift = 'remove Shift';

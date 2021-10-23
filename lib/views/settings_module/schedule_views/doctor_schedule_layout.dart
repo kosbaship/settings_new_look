@@ -41,7 +41,7 @@ class ScheduleScreen extends StatelessWidget {
       );
 
   Widget _buildSettingScreenLayout(context) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 32),
+        padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Column(
           children: [
             ClinicTabBar(),
