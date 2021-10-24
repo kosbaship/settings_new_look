@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'call_tab_view_widgets.dart';
+
 class CallTimings extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Padding(
@@ -9,11 +11,7 @@ class CallTimings extends StatelessWidget {
           physics: BouncingScrollPhysics(),
           child: Column(
             children: [
-              Container(
-                color: Colors.amber,
-                width: double.infinity,
-                height: 200,
-              ),
+              CallTabVoiceFees(),
               Container(
                 color: Colors.red,
                 width: double.infinity,

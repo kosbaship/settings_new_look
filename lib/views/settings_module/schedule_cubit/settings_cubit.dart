@@ -33,7 +33,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
     emit(SettingsSelectDateState());
   }
 
-  /// ================= handle fixed dates ========================
+  /// ================= handle clinic fixed dates ========================
 
   changeFixedDatesConfirmationScheduleValue(confirmationScheduleValue) {
     this._doctorSchedule.result.fixedDate.fdClinic.fdConfirmSchedule =
@@ -151,7 +151,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
     emit(SettingsChangeExpandedTilesValueState());
   }
 
-  /// ================= handle first in first out ========================
+  /// ================= handle clinic first in first out ========================
   changeFirstInFirstOutConfirmationScheduleValue(confirmationScheduleValue) {
     this._doctorSchedule.result.firstInFirstOut.fnClinic.fnConfirmSchedule =
         confirmationScheduleValue;
@@ -267,6 +267,9 @@ class SettingsCubit extends Cubit<SettingsStates> {
     emit(SettingsChangeExpandedTilesValueState());
   }
 
+  /// ================= handle Call Timings ========================
+  TextEditingController callPriceController = TextEditingController();
+
   /// ========= get data from the server =======================
   DoctorScheduleData _doctorSchedule;
   getScheduleDoctor() {
@@ -295,6 +298,16 @@ class SettingsCubit extends Cubit<SettingsStates> {
               .firstInFirstOut
               .fnClinic
               .fnPriceValue
+              .toString() ??
+          '0';
+
+      /// Call => Voice
+      this.callPriceController.text = this
+              ._doctorSchedule
+              .result
+              .fixedDate
+              .fdCall
+              .fdPriceVoice
               .toString() ??
           '0';
 
