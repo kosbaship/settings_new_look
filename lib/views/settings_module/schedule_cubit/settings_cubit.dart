@@ -20,16 +20,16 @@ class SettingsCubit extends Cubit<SettingsStates> {
 
   String examinationDropdownValue = kExaminationDropdownInitialValue;
   changeExaminationDropdownValue(examinationDropdownValue) {
-    print('====================');
-    print('$examinationDropdownValue');
-    print('====================');
     this.examinationDropdownValue = examinationDropdownValue;
     emit(SettingsChangeExaminationTypeState());
   }
 
-  String confirmationScheduleValue = kConfirmationScheduleDropdownInitialValue;
   changeConfirmationScheduleValue(confirmationScheduleValue) {
-    this.confirmationScheduleValue = confirmationScheduleValue;
+    print('====================');
+    print('$confirmationScheduleValue');
+    print('====================');
+    this._doctorSchedule.result.fixedDate.fdClinic.fdConfirmSchedule =
+        confirmationScheduleValue;
     emit(SettingsConfirmationScheduleTypeState());
   }
 

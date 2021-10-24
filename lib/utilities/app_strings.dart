@@ -34,10 +34,12 @@ const String kExaminationTo = 'To';
 const String kDemoTimePM = '6.00 PM';
 const String kDemoTimeAM = '11.00 AM';
 
-const String kConfirmationScheduleDropdownInitialValue = 'Permanent';
-const String kConfirmationScheduleDropdownSecondValue = 'Week';
-const String kConfirmationScheduleDropdownThirdValue = 'Month';
-const String kConfirmationScheduleDropdownForthValue = 'Year';
+const List<String> kConfirmationScheduleDropdownItems = [
+  'Permanent',
+  'Week',
+  'Month',
+  'Year',
+];
 
 const String kActiveClinicMedicalSVG = 'assets/blue_clinic_medical.svg';
 const String kUnActiveClinicMedicalSVG = 'assets/grey_clinic_medical.svg';
@@ -50,8 +52,7 @@ const String kActiveCupertinoSwitchSVG = 'assets/active_cupertino_switch.svg';
 const String kUnActiveCupertinoSwitchSVG =
     'assets/un_active_cupertino_switch.svg';
 
-const String kExaminationDurationDropdownInitialValue = '15';
-const List<String> examinationDurationDropdownItems = [
+const List<String> kExaminationDurationDropdownItems = [
   '15',
   '30',
   '45',

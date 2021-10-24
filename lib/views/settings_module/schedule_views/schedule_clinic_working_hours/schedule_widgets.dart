@@ -164,15 +164,15 @@ class ClinicTabView extends StatelessWidget {
                 width: 8.0,
               ),
               CustomDropDownWithoutUnderline(
-                value: SettingsCubit.get(context).confirmationScheduleValue,
+                value: SettingsCubit.get(context)
+                    .doctorSchedule
+                    .result
+                    .fixedDate
+                    .fdClinic
+                    .fdConfirmSchedule,
                 onChanged: (String newValue) => SettingsCubit.get(context)
                     .changeConfirmationScheduleValue(newValue),
-                items: <String>[
-                  kConfirmationScheduleDropdownInitialValue,
-                  kConfirmationScheduleDropdownSecondValue,
-                  kConfirmationScheduleDropdownThirdValue,
-                  kConfirmationScheduleDropdownForthValue,
-                ]
+                items: kConfirmationScheduleDropdownItems
                     .map<DropdownMenuItem<String>>(
                       (String value) => DropdownMenuItem<String>(
                         value: value,
@@ -531,7 +531,7 @@ class FixedDatesWorkTime extends StatelessWidget {
                   onChanged: (String newValue) => SettingsCubit.get(context)
                       .changeFixedDatesFirstShiftExaminationDurationDropdownValue(
                           newValue, dayListItemIndex),
-                  items: examinationDurationDropdownItems
+                  items: kExaminationDurationDropdownItems
                       .map<DropdownMenuItem<String>>(
                           (String value) => DropdownMenuItem<String>(
                                 value: value,
@@ -759,7 +759,7 @@ class FixedDatesWorkTime extends StatelessWidget {
                                 context)
                             .changeFixedDatesSecondShiftExaminationDurationDropdownValue(
                                 newValue, dayListItemIndex),
-                        items: examinationDurationDropdownItems
+                        items: kExaminationDurationDropdownItems
                             .map<DropdownMenuItem<String>>(
                                 (String value) => DropdownMenuItem<String>(
                                       value: value,
@@ -1140,7 +1140,7 @@ class FirstInFirstOutWorkTime extends StatelessWidget {
                   onChanged: (String newValue) => SettingsCubit.get(context)
                       .changeFirstInFirstOutFirstShiftExaminationDurationDropdownValue(
                           newValue, dayListItemIndex),
-                  items: examinationDurationDropdownItems
+                  items: kExaminationDurationDropdownItems
                       .map<DropdownMenuItem<String>>(
                           (String value) => DropdownMenuItem<String>(
                                 value: value,
@@ -1368,7 +1368,7 @@ class FirstInFirstOutWorkTime extends StatelessWidget {
                                 context)
                             .changeFirstInFirstOutSecondShiftExaminationDurationDropdownValue(
                                 newValue, dayListItemIndex),
-                        items: examinationDurationDropdownItems
+                        items: kExaminationDurationDropdownItems
                             .map<DropdownMenuItem<String>>(
                                 (String value) => DropdownMenuItem<String>(
                                       value: value,
