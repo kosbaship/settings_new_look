@@ -219,7 +219,7 @@ class ClinicTabView extends StatelessWidget {
       );
 }
 
-class FixedDatesFees extends StatelessWidget {
+class ClinicTabFixedDatesFees extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Column(
         children: [
@@ -274,7 +274,7 @@ class FixedDatesFees extends StatelessWidget {
       );
 }
 
-class FixedDatesWorkTime extends StatelessWidget {
+class ClinicTabFixedDatesWorkTime extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Column(
         children: [
@@ -827,7 +827,7 @@ class FixedDatesWorkTime extends StatelessWidget {
       );
 }
 
-class FirstInFirstOutFees extends StatelessWidget {
+class ClinicTabFirstInFirstOutFees extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Column(
         children: [
@@ -882,7 +882,7 @@ class FirstInFirstOutFees extends StatelessWidget {
       );
 }
 
-class FirstInFirstOutWorkTime extends StatelessWidget {
+class ClinicTabFirstInFirstOutWorkTime extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Column(
         children: [

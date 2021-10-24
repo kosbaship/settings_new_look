@@ -32,10 +32,13 @@ class ClinicWorkingHours extends StatelessWidget {
       );
 
   Widget _drawFixedDatesView(BuildContext context) => Column(
-        children: [FixedDatesFees(), FixedDatesWorkTime()],
+        children: [ClinicTabFixedDatesFees(), ClinicTabFixedDatesWorkTime()],
       );
 
   Widget _drawFirstInFirstOutView(BuildContext context) => Column(
-        children: [FirstInFirstOutFees(), FirstInFirstOutWorkTime()],
+        children: [
+          ClinicTabFirstInFirstOutFees(),
+          ClinicTabFirstInFirstOutWorkTime()
+        ],
       );
 }
