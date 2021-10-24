@@ -36,6 +36,6 @@ class ClinicWorkingHours extends StatelessWidget {
       );
 
   Widget _drawFirstInFirstOutView(BuildContext context) => Column(
-        children: [FirstInFirstOutFees()],
+        children: [FirstInFirstOutFees(), FirstInFirstOutWorkTime()],
       );
 }

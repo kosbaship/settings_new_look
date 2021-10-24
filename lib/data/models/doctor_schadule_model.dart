@@ -150,7 +150,7 @@ class FnWorkingDays {
   String fnWdayTo2;
   String fnWdayDuration2;
   String fnWdayActiveDay;
-  Null fnWdayActiveShift;
+  String fnWdayActiveShift;
 
   FnWorkingDays.fromJson(Map<String, dynamic> json) {
     fnWdayDayName = json['fn_wday_day_name'];

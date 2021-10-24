@@ -36,44 +36,67 @@ class SettingsCubit extends Cubit<SettingsStates> {
   final formKey = GlobalKey<FormState>();
   _checkExaminationPriceTextFieldValidation() =>
       this.formKey.currentState.validate();
+  selectDate(dateTime) {
+    print('dateTime $dateTime');
+    fixedDateFullDatTime = dateTime;
+    emit(SettingsSelectDateState());
+  }
 
   /// ================= handle fixed dates ========================
   TextEditingController fixedDatesExaminationPriceController =
       TextEditingController();
-  activateDay(bool expandedTilesValue, index) {
-    this
-        ._doctorSchedule
-        .result
-        .fixedDate
-        .fdClinic
-        .fdWorkingDays[index]
-        .fdWdayActiveDay = expandedTilesValue ? 1.toString() : 0.toString();
-    emit(SettingsChangeExpandedTilesValueState());
+
+  DateTime fixedDateFullDatTime = DateTime.now();
+  fixedDateConfirmSelectedDate(dayListItemIndex, ShiftType shiftType) {
+    switch (shiftType) {
+      case ShiftType.FirstShiftStart:
+        this
+                ._doctorSchedule
+                .result
+                .fixedDate
+                .fdClinic
+                .fdWorkingDays[dayListItemIndex]
+                .fdWdayFrom =
+            '${fixedDateFullDatTime.hour}:${fixedDateFullDatTime.minute}';
+        break;
+      case ShiftType.FirstShiftEnd:
+        this
+                ._doctorSchedule
+                .result
+                .fixedDate
+                .fdClinic
+                .fdWorkingDays[dayListItemIndex]
+                .fdWdayTo =
+            '${fixedDateFullDatTime.hour}:${fixedDateFullDatTime.minute}';
+        break;
+      case ShiftType.SecondShiftStart:
+        this
+                ._doctorSchedule
+                .result
+                .fixedDate
+                .fdClinic
+                .fdWorkingDays[dayListItemIndex]
+                .fdWdayFrom2 =
+            '${fixedDateFullDatTime.hour}:${fixedDateFullDatTime.minute}';
+        break;
+      case ShiftType.SecondShiftEnd:
+        this
+                ._doctorSchedule
+                .result
+                .fixedDate
+                .fdClinic
+                .fdWorkingDays[dayListItemIndex]
+                .fdWdayTo2 =
+            '${fixedDateFullDatTime.hour}:${fixedDateFullDatTime.minute}';
+        break;
+      default:
+        break;
+    }
+
+    emit(SettingsConfirmSelectedDateState());
   }
 
-  enableSecondShift(dayListItemIndex) {
-    this
-        ._doctorSchedule
-        .result
-        .fixedDate
-        .fdClinic
-        .fdWorkingDays[dayListItemIndex]
-        .fdWdayActiveShift = 1.toString();
-    emit(SettingsEnableSecondShiftDurationState());
-  }
-
-  disableSecondShift(dayListItemIndex) {
-    this
-        ._doctorSchedule
-        .result
-        .fixedDate
-        .fdClinic
-        .fdWorkingDays[dayListItemIndex]
-        .fdWdayActiveShift = 0.toString();
-    emit(SettingsDisableSecondShiftDurationState());
-  }
-
-  changeFirstShiftExaminationDurationDropdownValue(
+  changeFixedDatesFirstShiftExaminationDurationDropdownValue(
       examinationDurationDropdownValue, dayListItemIndex) {
     this
         ._doctorSchedule
@@ -85,7 +108,18 @@ class SettingsCubit extends Cubit<SettingsStates> {
     emit(SettingsChangeExaminationDurationState());
   }
 
-  changeSecondShiftExaminationDurationDropdownValue(
+  fixedDatesEnableSecondShift(dayListItemIndex) {
+    this
+        ._doctorSchedule
+        .result
+        .fixedDate
+        .fdClinic
+        .fdWorkingDays[dayListItemIndex]
+        .fdWdayActiveShift = 1.toString();
+    emit(SettingsEnableSecondShiftDurationState());
+  }
+
+  changeFixedDatesSecondShiftExaminationDurationDropdownValue(
       examinationDurationDropdownValue, dayListItemIndex) {
     this
         ._doctorSchedule
@@ -97,40 +131,73 @@ class SettingsCubit extends Cubit<SettingsStates> {
     emit(SettingsChangeExaminationDurationState());
   }
 
-  DateTime fullDatTime = DateTime.now();
-  confirmSelectedDate(dayListItemIndex, ShiftType shiftType) {
+  fixedDatesDisableSecondShift(dayListItemIndex) {
+    this
+        ._doctorSchedule
+        .result
+        .fixedDate
+        .fdClinic
+        .fdWorkingDays[dayListItemIndex]
+        .fdWdayActiveShift = 0.toString();
+    emit(SettingsDisableSecondShiftDurationState());
+  }
+
+  fixedDatesActivateDay(bool expandedTilesValue, index) {
+    this
+        ._doctorSchedule
+        .result
+        .fixedDate
+        .fdClinic
+        .fdWorkingDays[index]
+        .fdWdayActiveDay = expandedTilesValue ? 1.toString() : 0.toString();
+    emit(SettingsChangeExpandedTilesValueState());
+  }
+
+  /// ================= handle first in first out ========================
+  TextEditingController firstInFirstOutExaminationPriceController =
+      TextEditingController();
+  DateTime firstInFirstOutFullDatTime = DateTime.now();
+  firstInFirstOutConfirmSelectedDate(dayListItemIndex, ShiftType shiftType) {
     switch (shiftType) {
       case ShiftType.FirstShiftStart:
         this
-            ._doctorSchedule
-            .result
-            .fixedDate
-            .fdClinic
-            .fdWorkingDays[dayListItemIndex]
-            .fdWdayFrom = '${fullDatTime.hour}:${fullDatTime.minute}';
+                ._doctorSchedule
+                .result
+                .firstInFirstOut
+                .fnClinic
+                .fnWorkingDays[dayListItemIndex]
+                .fnWdayFrom =
+            '${firstInFirstOutFullDatTime.hour}:${firstInFirstOutFullDatTime.minute}';
         break;
       case ShiftType.FirstShiftEnd:
         this
-            ._doctorSchedule
-            .result
-            .fixedDate
-            .fdClinic
-            .fdWorkingDays[dayListItemIndex]
-            .fdWdayTo = '${fullDatTime.hour}:${fullDatTime.minute}';
+                ._doctorSchedule
+                .result
+                .firstInFirstOut
+                .fnClinic
+                .fnWorkingDays[dayListItemIndex]
+                .fnWdayTo =
+            '${firstInFirstOutFullDatTime.hour}:${firstInFirstOutFullDatTime.minute}';
         break;
       case ShiftType.SecondShiftStart:
-        this._doctorSchedule.result
-          ..fixedDate.fdClinic.fdWorkingDays[dayListItemIndex].fdWdayFrom2 =
-              '${fullDatTime.hour}:${fullDatTime.minute}';
+        this
+                ._doctorSchedule
+                .result
+                .firstInFirstOut
+                .fnClinic
+                .fnWorkingDays[dayListItemIndex]
+                .fnWdayFrom2 =
+            '${firstInFirstOutFullDatTime.hour}:${firstInFirstOutFullDatTime.minute}';
         break;
       case ShiftType.SecondShiftEnd:
         this
-            ._doctorSchedule
-            .result
-            .fixedDate
-            .fdClinic
-            .fdWorkingDays[dayListItemIndex]
-            .fdWdayTo2 = '${fullDatTime.hour}:${fullDatTime.minute}';
+                ._doctorSchedule
+                .result
+                .firstInFirstOut
+                .fnClinic
+                .fnWorkingDays[dayListItemIndex]
+                .fnWdayTo2 =
+            '${firstInFirstOutFullDatTime.hour}:${firstInFirstOutFullDatTime.minute}';
         break;
       default:
         break;
@@ -139,15 +206,62 @@ class SettingsCubit extends Cubit<SettingsStates> {
     emit(SettingsConfirmSelectedDateState());
   }
 
-  selectDate(dateTime) {
-    print('dateTime $dateTime');
-    fullDatTime = dateTime;
-    emit(SettingsSelectDateState());
+  changeFirstInFirstOutFirstShiftExaminationDurationDropdownValue(
+      examinationDurationDropdownValue, dayListItemIndex) {
+    this
+        ._doctorSchedule
+        .result
+        .firstInFirstOut
+        .fnClinic
+        .fnWorkingDays[dayListItemIndex]
+        .fnWdayDuration = examinationDurationDropdownValue;
+    emit(SettingsChangeExaminationDurationState());
   }
 
-  /// ================= handle first in first out ========================
-  TextEditingController firstInFirstOutExaminationPriceController =
-      TextEditingController();
+  firstInFirstOutEnableSecondShift(dayListItemIndex) {
+    this
+        ._doctorSchedule
+        .result
+        .firstInFirstOut
+        .fnClinic
+        .fnWorkingDays[dayListItemIndex]
+        .fnWdayActiveShift = 1.toString();
+    emit(SettingsEnableSecondShiftDurationState());
+  }
+
+  changeFirstInFirstOutSecondShiftExaminationDurationDropdownValue(
+      examinationDurationDropdownValue, dayListItemIndex) {
+    this
+        ._doctorSchedule
+        .result
+        .firstInFirstOut
+        .fnClinic
+        .fnWorkingDays[dayListItemIndex]
+        .fnWdayDuration2 = examinationDurationDropdownValue;
+    emit(SettingsChangeExaminationDurationState());
+  }
+
+  firstInFirstOutDisableSecondShift(dayListItemIndex) {
+    this
+        ._doctorSchedule
+        .result
+        .firstInFirstOut
+        .fnClinic
+        .fnWorkingDays[dayListItemIndex]
+        .fnWdayActiveShift = 0.toString();
+    emit(SettingsDisableSecondShiftDurationState());
+  }
+
+  firstInFirstOutActivateDay(bool expandedTilesValue, index) {
+    this
+        ._doctorSchedule
+        .result
+        .firstInFirstOut
+        .fnClinic
+        .fnWorkingDays[index]
+        .fnWdayActiveDay = expandedTilesValue ? 1.toString() : 0.toString();
+    emit(SettingsChangeExpandedTilesValueState());
+  }
 
   /// ========= get data from the server =======================
   DoctorScheduleData _doctorSchedule;
