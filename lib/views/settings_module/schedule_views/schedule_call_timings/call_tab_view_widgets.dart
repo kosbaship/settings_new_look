@@ -391,7 +391,7 @@ class CallTabCallsTime extends StatelessWidget {
                                     250,
                                     (dateTime) {
                                       SettingsCubit.get(context)
-                                          .selectDate(dateTime);
+                                          .callsTimeSelectDate(dateTime);
                                     },
                                     CupertinoDatePickerMode.time,
                                   ));
@@ -464,7 +464,7 @@ class CallTabCallsTime extends StatelessWidget {
                                     250,
                                     (dateTime) {
                                       SettingsCubit.get(context)
-                                          .selectDate(dateTime);
+                                          .callsTimeSelectDate(dateTime);
                                     },
                                     CupertinoDatePickerMode.time,
                                   ));

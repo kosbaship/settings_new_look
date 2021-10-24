@@ -27,11 +27,6 @@ class SettingsCubit extends Cubit<SettingsStates> {
   final formKey = GlobalKey<FormState>();
   _checkExaminationPriceTextFieldValidation() =>
       this.formKey.currentState.validate();
-  selectDate(dateTime) {
-    print('dateTime $dateTime');
-    fixedDateFullDatTime = dateTime;
-    emit(SettingsSelectDateState());
-  }
 
   /// ================= handle clinic fixed dates ========================
 
@@ -151,6 +146,12 @@ class SettingsCubit extends Cubit<SettingsStates> {
     emit(SettingsChangeExpandedTilesValueState());
   }
 
+  fixedDateSelectDate(dateTime) {
+    print('dateTime $dateTime');
+    fixedDateFullDatTime = dateTime;
+    emit(SettingsSelectDateState());
+  }
+
   /// ================= handle clinic first in first out ========================
   changeFirstInFirstOutConfirmationScheduleValue(confirmationScheduleValue) {
     this._doctorSchedule.result.firstInFirstOut.fnClinic.fnConfirmSchedule =
@@ -174,6 +175,8 @@ class SettingsCubit extends Cubit<SettingsStates> {
             '${firstInFirstOutFullDatTime.hour}:${firstInFirstOutFullDatTime.minute}';
         break;
       case ShiftType.FirstShiftEnd:
+        print('hesloooooo');
+
         this
                 ._doctorSchedule
                 .result
@@ -267,6 +270,12 @@ class SettingsCubit extends Cubit<SettingsStates> {
     emit(SettingsChangeExpandedTilesValueState());
   }
 
+  firstInFirstOutSelectDate(dateTime) {
+    print('dateTime $dateTime');
+    firstInFirstOutFullDatTime = dateTime;
+    emit(SettingsSelectDateState());
+  }
+
   /// ================= handle Call Timings ========================
   TextEditingController callPriceController = TextEditingController();
   TextEditingController videoPriceController = TextEditingController();
@@ -355,6 +364,12 @@ class SettingsCubit extends Cubit<SettingsStates> {
         .fdWorkingDays[index]
         .fdWdayActiveDay = expandedTilesValue ? 1.toString() : 0.toString();
     emit(SettingsChangeExpandedTilesValueState());
+  }
+
+  callsTimeSelectDate(dateTime) {
+    print('dateTime $dateTime');
+    callsTimeFullDatTime = dateTime;
+    emit(SettingsSelectDateState());
   }
 
   /// ========= get data from the server =======================

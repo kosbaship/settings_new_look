@@ -435,7 +435,7 @@ class ClinicTabFixedDatesWorkTime extends StatelessWidget {
                                     250,
                                     (dateTime) {
                                       SettingsCubit.get(context)
-                                          .selectDate(dateTime);
+                                          .fixedDateSelectDate(dateTime);
                                     },
                                     CupertinoDatePickerMode.time,
                                   ));
@@ -508,7 +508,7 @@ class ClinicTabFixedDatesWorkTime extends StatelessWidget {
                                     250,
                                     (dateTime) {
                                       SettingsCubit.get(context)
-                                          .selectDate(dateTime);
+                                          .fixedDateSelectDate(dateTime);
                                     },
                                     CupertinoDatePickerMode.time,
                                   ));
@@ -652,7 +652,8 @@ class ClinicTabFixedDatesWorkTime extends StatelessWidget {
                                             250,
                                             (dateTime) {
                                               SettingsCubit.get(context)
-                                                  .selectDate(dateTime);
+                                                  .fixedDateSelectDate(
+                                                      dateTime);
                                             },
                                             CupertinoDatePickerMode.time,
                                           ));
@@ -732,7 +733,8 @@ class ClinicTabFixedDatesWorkTime extends StatelessWidget {
                                             250,
                                             (dateTime) {
                                               SettingsCubit.get(context)
-                                                  .selectDate(dateTime);
+                                                  .fixedDateSelectDate(
+                                                      dateTime);
                                             },
                                             CupertinoDatePickerMode.time,
                                           ));
@@ -1044,7 +1046,7 @@ class ClinicTabFirstInFirstOutWorkTime extends StatelessWidget {
                                     250,
                                     (dateTime) {
                                       SettingsCubit.get(context)
-                                          .selectDate(dateTime);
+                                          .firstInFirstOutSelectDate(dateTime);
                                     },
                                     CupertinoDatePickerMode.time,
                                   ));
@@ -1117,7 +1119,7 @@ class ClinicTabFirstInFirstOutWorkTime extends StatelessWidget {
                                     250,
                                     (dateTime) {
                                       SettingsCubit.get(context)
-                                          .selectDate(dateTime);
+                                          .firstInFirstOutSelectDate(dateTime);
                                     },
                                     CupertinoDatePickerMode.time,
                                   ));
@@ -1128,10 +1130,10 @@ class ClinicTabFirstInFirstOutWorkTime extends StatelessWidget {
                                   SettingsCubit.get(context)
                                       .doctorSchedule
                                       .result
-                                      .fixedDate
-                                      .fdClinic
-                                      .fdWorkingDays[dayListItemIndex]
-                                      .fdWdayTo,
+                                      .firstInFirstOut
+                                      .fnClinic
+                                      .fnWorkingDays[dayListItemIndex]
+                                      .fnWdayTo,
                                   style: Theme.of(context).textTheme.headline5,
                                 ),
                                 SizedBox(
@@ -1261,7 +1263,8 @@ class ClinicTabFirstInFirstOutWorkTime extends StatelessWidget {
                                             250,
                                             (dateTime) {
                                               SettingsCubit.get(context)
-                                                  .selectDate(dateTime);
+                                                  .firstInFirstOutSelectDate(
+                                                      dateTime);
                                             },
                                             CupertinoDatePickerMode.time,
                                           ));
@@ -1273,10 +1276,10 @@ class ClinicTabFirstInFirstOutWorkTime extends StatelessWidget {
                                         SettingsCubit.get(context)
                                             .doctorSchedule
                                             .result
-                                            .fixedDate
-                                            .fdClinic
-                                            .fdWorkingDays[dayListItemIndex]
-                                            .fdWdayFrom2,
+                                            .firstInFirstOut
+                                            .fnClinic
+                                            .fnWorkingDays[dayListItemIndex]
+                                            .fnWdayFrom2,
                                         style: Theme.of(context)
                                             .textTheme
                                             .headline5,
@@ -1341,7 +1344,8 @@ class ClinicTabFirstInFirstOutWorkTime extends StatelessWidget {
                                             250,
                                             (dateTime) {
                                               SettingsCubit.get(context)
-                                                  .selectDate(dateTime);
+                                                  .firstInFirstOutSelectDate(
+                                                      dateTime);
                                             },
                                             CupertinoDatePickerMode.time,
                                           ));
