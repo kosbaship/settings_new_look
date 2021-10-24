@@ -270,9 +270,16 @@ class SettingsCubit extends Cubit<SettingsStates> {
   /// ================= handle Call Timings ========================
   TextEditingController callPriceController = TextEditingController();
   TextEditingController videoPriceController = TextEditingController();
+  TextEditingController spotPriceController = TextEditingController();
 
-  videoCallActivate(bool expandedTilesValue) {
+  activateVideoCall(bool expandedTilesValue) {
     this._doctorSchedule.result.fixedDate.fdCall.fdActiveVideo =
+        expandedTilesValue ? 1.toString() : 0.toString();
+    emit(SettingsChangeExpandedTilesValueState());
+  }
+
+  activateSpotCall(bool expandedTilesValue) {
+    this._doctorSchedule.result.fixedDate.fdCall.fdActiveSpot =
         expandedTilesValue ? 1.toString() : 0.toString();
     emit(SettingsChangeExpandedTilesValueState());
   }
@@ -327,6 +334,11 @@ class SettingsCubit extends Cubit<SettingsStates> {
               .fdPriceVideo
               .toString() ??
           '0';
+
+      /// Call => spot
+      this.spotPriceController.text =
+          this._doctorSchedule.result.fixedDate.fdCall.fdPriceSpot.toString() ??
+              '0';
 
       emit(SettingsLoadingDataSuccessState());
     }).onError((errorMessage, stackTrace) {

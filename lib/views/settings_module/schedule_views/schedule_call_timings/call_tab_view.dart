@@ -13,6 +13,7 @@ class CallTimings extends StatelessWidget {
             children: [
               CallTabVoiceFees(),
               CallTabVideoFees(),
+              CallTabSpotFees(),
               Container(
                 color: Colors.green,
                 width: double.infinity,
