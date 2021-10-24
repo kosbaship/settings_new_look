@@ -49,7 +49,7 @@ class ScheduleScreen extends StatelessWidget {
               child: TabBarView(
                 physics: NeverScrollableScrollPhysics(),
                 children: [
-                  ClinicWorkingHours(),
+                  ClinicTimings(),
                   Icon(
                     Icons.directions_bike,
                     color: Colors.red,

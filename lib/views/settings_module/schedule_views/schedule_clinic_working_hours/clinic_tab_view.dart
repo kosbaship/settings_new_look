@@ -5,7 +5,7 @@ import 'package:settings_new_look/utilities/app_strings.dart';
 import 'package:settings_new_look/views/settings_module/schedule_cubit/settings_cubit.dart';
 import 'package:settings_new_look/views/settings_module/schedule_views/schedule_clinic_working_hours/schedule_widgets.dart';
 
-class ClinicWorkingHours extends StatelessWidget {
+class ClinicTimings extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Form(
         key: SettingsCubit.get(context).formKey,
