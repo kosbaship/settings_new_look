@@ -351,219 +351,210 @@ class FixedDatesWorkTime extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
-            Container(
-              height: kOneShiftItemHeight,
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 28.0,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Row(
-                          children: [
-                            OneLineText(
-                              kExaminationFrom,
-                              style: Theme.of(context).textTheme.headline5,
-                            ),
-                            Spacer(),
-                            InkWell(
-                              onTap: () {
-                                onAlertWithCustomContentPressed(context,
-                                    title: 'Choose Time',
-                                    buttons: [
-                                      DialogButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text(
-                                          'Cancel',
-                                          style:
-                                              TextStyle(color: kAppWhiteColor),
-                                        ),
-                                        color: kToastError,
-                                      ),
-                                      DialogButton(
-                                        onPressed: () {
-                                          SettingsCubit.get(context)
-                                              .confirmSelectedDate(
-                                                  dayListItemIndex,
-                                                  ShiftType.FirstShiftStart);
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text(
-                                          'Confirm',
-                                          style:
-                                              TextStyle(color: kAppWhiteColor),
-                                        ),
-                                        color: kToastSuccess,
-                                      ),
-                                    ],
-                                    contentWidget: showDatePickerWidget(
-                                      context,
-                                      250,
-                                      (dateTime) {
-                                        SettingsCubit.get(context)
-                                            .selectDate(dateTime);
-                                      },
-                                      CupertinoDatePickerMode.time,
-                                    ));
-                              },
-                              child: Row(
-                                children: [
-                                  OneLineText(
-                                    SettingsCubit.get(context)
-                                        .doctorSchedule
-                                        .result
-                                        .fixedDate
-                                        .fdClinic
-                                        .fdWorkingDays[dayListItemIndex]
-                                        .fdWdayFrom,
-                                    style:
-                                        Theme.of(context).textTheme.headline5,
-                                  ),
-                                  SizedBox(
-                                    width: 12.0,
-                                  ),
-                                  SvgPicture.asset(kBlackDownArrowSVG),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        width: 44.0,
-                      ),
-                      Expanded(
-                        child: Row(
-                          children: [
-                            OneLineText(
-                              kExaminationTo,
-                              style: Theme.of(context).textTheme.headline5,
-                            ),
-                            Spacer(),
-                            InkWell(
-                              onTap: () {
-                                onAlertWithCustomContentPressed(context,
-                                    title: 'Choose Time',
-                                    buttons: [
-                                      DialogButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text(
-                                          'Cancel',
-                                          style:
-                                              TextStyle(color: kAppWhiteColor),
-                                        ),
-                                        color: kToastError,
-                                      ),
-                                      DialogButton(
-                                        onPressed: () {
-                                          SettingsCubit.get(context)
-                                              .confirmSelectedDate(
-                                                  dayListItemIndex,
-                                                  ShiftType.FirstShiftEnd);
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text(
-                                          'Confirm',
-                                          style:
-                                              TextStyle(color: kAppWhiteColor),
-                                        ),
-                                        color: kToastSuccess,
-                                      ),
-                                    ],
-                                    contentWidget: showDatePickerWidget(
-                                      context,
-                                      250,
-                                      (dateTime) {
-                                        SettingsCubit.get(context)
-                                            .selectDate(dateTime);
-                                      },
-                                      CupertinoDatePickerMode.time,
-                                    ));
-                              },
-                              child: Row(
-                                children: [
-                                  OneLineText(
-                                    SettingsCubit.get(context)
-                                        .doctorSchedule
-                                        .result
-                                        .fixedDate
-                                        .fdClinic
-                                        .fdWorkingDays[dayListItemIndex]
-                                        .fdWdayTo,
-                                    style:
-                                        Theme.of(context).textTheme.headline5,
-                                  ),
-                                  SizedBox(
-                                    width: 12.0,
-                                  ),
-                                  SvgPicture.asset(kBlackDownArrowSVG),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 24,
-                  ),
-                  Row(
-                    children: [
-                      OneLineText(
-                        kExaminationDuration,
-                        style: Theme.of(context).textTheme.headline5,
-                      ),
-                      Spacer(),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 12,
-                  ),
-                  CustomDropDownWithUnderLine(
-                    value: SettingsCubit.get(context)
-                        .doctorSchedule
-                        .result
-                        .fixedDate
-                        .fdClinic
-                        .fdWorkingDays[dayListItemIndex]
-                        .fdWdayDuration,
-                    onChanged: (String newValue) => SettingsCubit.get(context)
-                        .changeFirstShiftExaminationDurationDropdownValue(
-                            newValue, dayListItemIndex),
-                    items: examinationDurationDropdownItems
-                        .map<DropdownMenuItem<String>>(
-                            (String value) => DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(value + ' minutes'),
-                                ))
-                        .toList(),
-                  ),
-                  TextButton(
-                      onPressed: () => SettingsCubit.get(context)
-                          .enableSecondShift(dayListItemIndex),
+            Column(
+              children: [
+                SizedBox(
+                  height: 28.0,
+                ),
+                Row(
+                  children: [
+                    Expanded(
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.add),
-                          SizedBox(width: 8.0),
-                          Text(
-                            kAddShift,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline5
-                                .copyWith(color: kAppDefaultColor),
+                          OneLineText(
+                            kExaminationFrom,
+                            style: Theme.of(context).textTheme.headline5,
                           ),
+                          Spacer(),
+                          InkWell(
+                            onTap: () {
+                              onAlertWithCustomContentPressed(context,
+                                  title: 'Choose Time',
+                                  buttons: [
+                                    DialogButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text(
+                                        'Cancel',
+                                        style: TextStyle(color: kAppWhiteColor),
+                                      ),
+                                      color: kToastError,
+                                    ),
+                                    DialogButton(
+                                      onPressed: () {
+                                        SettingsCubit.get(context)
+                                            .confirmSelectedDate(
+                                                dayListItemIndex,
+                                                ShiftType.FirstShiftStart);
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text(
+                                        'Confirm',
+                                        style: TextStyle(color: kAppWhiteColor),
+                                      ),
+                                      color: kToastSuccess,
+                                    ),
+                                  ],
+                                  contentWidget: showDatePickerWidget(
+                                    context,
+                                    250,
+                                    (dateTime) {
+                                      SettingsCubit.get(context)
+                                          .selectDate(dateTime);
+                                    },
+                                    CupertinoDatePickerMode.time,
+                                  ));
+                            },
+                            child: Row(
+                              children: [
+                                OneLineText(
+                                  SettingsCubit.get(context)
+                                      .doctorSchedule
+                                      .result
+                                      .fixedDate
+                                      .fdClinic
+                                      .fdWorkingDays[dayListItemIndex]
+                                      .fdWdayFrom,
+                                  style: Theme.of(context).textTheme.headline5,
+                                ),
+                                SizedBox(
+                                  width: 12.0,
+                                ),
+                                SvgPicture.asset(kBlackDownArrowSVG),
+                              ],
+                            ),
+                          )
                         ],
-                      ))
-                ],
-              ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 44.0,
+                    ),
+                    Expanded(
+                      child: Row(
+                        children: [
+                          OneLineText(
+                            kExaminationTo,
+                            style: Theme.of(context).textTheme.headline5,
+                          ),
+                          Spacer(),
+                          InkWell(
+                            onTap: () {
+                              onAlertWithCustomContentPressed(context,
+                                  title: 'Choose Time',
+                                  buttons: [
+                                    DialogButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text(
+                                        'Cancel',
+                                        style: TextStyle(color: kAppWhiteColor),
+                                      ),
+                                      color: kToastError,
+                                    ),
+                                    DialogButton(
+                                      onPressed: () {
+                                        SettingsCubit.get(context)
+                                            .confirmSelectedDate(
+                                                dayListItemIndex,
+                                                ShiftType.FirstShiftEnd);
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text(
+                                        'Confirm',
+                                        style: TextStyle(color: kAppWhiteColor),
+                                      ),
+                                      color: kToastSuccess,
+                                    ),
+                                  ],
+                                  contentWidget: showDatePickerWidget(
+                                    context,
+                                    250,
+                                    (dateTime) {
+                                      SettingsCubit.get(context)
+                                          .selectDate(dateTime);
+                                    },
+                                    CupertinoDatePickerMode.time,
+                                  ));
+                            },
+                            child: Row(
+                              children: [
+                                OneLineText(
+                                  SettingsCubit.get(context)
+                                      .doctorSchedule
+                                      .result
+                                      .fixedDate
+                                      .fdClinic
+                                      .fdWorkingDays[dayListItemIndex]
+                                      .fdWdayTo,
+                                  style: Theme.of(context).textTheme.headline5,
+                                ),
+                                SizedBox(
+                                  width: 12.0,
+                                ),
+                                SvgPicture.asset(kBlackDownArrowSVG),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 24,
+                ),
+                Row(
+                  children: [
+                    OneLineText(
+                      kExaminationDuration,
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                    Spacer(),
+                  ],
+                ),
+                SizedBox(
+                  height: 12,
+                ),
+                CustomDropDownWithUnderLine(
+                  value: SettingsCubit.get(context)
+                      .doctorSchedule
+                      .result
+                      .fixedDate
+                      .fdClinic
+                      .fdWorkingDays[dayListItemIndex]
+                      .fdWdayDuration,
+                  onChanged: (String newValue) => SettingsCubit.get(context)
+                      .changeFirstShiftExaminationDurationDropdownValue(
+                          newValue, dayListItemIndex),
+                  items: examinationDurationDropdownItems
+                      .map<DropdownMenuItem<String>>(
+                          (String value) => DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value + ' minutes'),
+                              ))
+                      .toList(),
+                ),
+                TextButton(
+                    onPressed: () => SettingsCubit.get(context)
+                        .enableSecondShift(dayListItemIndex),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.add),
+                        SizedBox(width: 8.0),
+                        Text(
+                          kAddShift,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline5
+                              .copyWith(color: kAppDefaultColor),
+                        ),
+                      ],
+                    ))
+              ],
             ),
             SettingsCubit.get(context)
                         .doctorSchedule
@@ -573,233 +564,228 @@ class FixedDatesWorkTime extends StatelessWidget {
                         .fdWorkingDays[dayListItemIndex]
                         .fdWdayActiveShift ==
                     1.toString()
-                ? Container(
-                    height: kOneShiftItemHeight,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 28.0,
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Row(
-                                children: [
-                                  OneLineText(
-                                    kExaminationFrom,
-                                    style:
-                                        Theme.of(context).textTheme.headline5,
-                                  ),
-                                  Spacer(),
-                                  InkWell(
-                                    onTap: () {
-                                      {
-                                        onAlertWithCustomContentPressed(context,
-                                            title: 'Choose Time',
-                                            buttons: [
-                                              DialogButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Text(
-                                                  'Cancel',
-                                                  style: TextStyle(
-                                                      color: kAppWhiteColor),
-                                                ),
-                                                color: kToastError,
-                                              ),
-                                              DialogButton(
-                                                onPressed: () {
-                                                  SettingsCubit.get(context)
-                                                      .confirmSelectedDate(
-                                                          dayListItemIndex,
-                                                          ShiftType
-                                                              .SecondShiftStart);
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Text(
-                                                  'Confirm',
-                                                  style: TextStyle(
-                                                      color: kAppWhiteColor),
-                                                ),
-                                                color: kToastSuccess,
-                                              ),
-                                            ],
-                                            contentWidget: showDatePickerWidget(
-                                              context,
-                                              250,
-                                              (dateTime) {
-                                                SettingsCubit.get(context)
-                                                    .selectDate(dateTime);
-                                              },
-                                              CupertinoDatePickerMode.time,
-                                            ));
-                                      }
-                                    },
-                                    child: Row(
-                                      children: [
-                                        OneLineText(
-                                          SettingsCubit.get(context)
-                                              .doctorSchedule
-                                              .result
-                                              .fixedDate
-                                              .fdClinic
-                                              .fdWorkingDays[dayListItemIndex]
-                                              .fdWdayFrom2,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headline5,
-                                        ),
-                                        SizedBox(
-                                          width: 12.0,
-                                        ),
-                                        SvgPicture.asset(kBlackDownArrowSVG),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              width: 44.0,
-                            ),
-                            Expanded(
-                              child: Row(
-                                children: [
-                                  OneLineText(
-                                    kExaminationTo,
-                                    style:
-                                        Theme.of(context).textTheme.headline5,
-                                  ),
-                                  Spacer(),
-                                  InkWell(
-                                    onTap: () {
-                                      {
-                                        onAlertWithCustomContentPressed(context,
-                                            title: 'Choose Time',
-                                            buttons: [
-                                              DialogButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Text(
-                                                  'Cancel',
-                                                  style: TextStyle(
-                                                      color: kAppWhiteColor),
-                                                ),
-                                                color: kToastError,
-                                              ),
-                                              DialogButton(
-                                                onPressed: () {
-                                                  SettingsCubit.get(context)
-                                                      .confirmSelectedDate(
-                                                          dayListItemIndex,
-                                                          ShiftType
-                                                              .SecondShiftEnd);
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Text(
-                                                  'Confirm',
-                                                  style: TextStyle(
-                                                      color: kAppWhiteColor),
-                                                ),
-                                                color: kToastSuccess,
-                                              ),
-                                            ],
-                                            contentWidget: showDatePickerWidget(
-                                              context,
-                                              250,
-                                              (dateTime) {
-                                                SettingsCubit.get(context)
-                                                    .selectDate(dateTime);
-                                              },
-                                              CupertinoDatePickerMode.time,
-                                            ));
-                                      }
-                                    },
-                                    child: Row(
-                                      children: [
-                                        OneLineText(
-                                          SettingsCubit.get(context)
-                                              .doctorSchedule
-                                              .result
-                                              .fixedDate
-                                              .fdClinic
-                                              .fdWorkingDays[dayListItemIndex]
-                                              .fdWdayTo2,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headline5,
-                                        ),
-                                        SizedBox(
-                                          width: 12.0,
-                                        ),
-                                        SvgPicture.asset(kBlackDownArrowSVG),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 24,
-                        ),
-                        Row(
-                          children: [
-                            OneLineText(
-                              kExaminationDuration,
-                              style: Theme.of(context).textTheme.headline5,
-                            ),
-                            Spacer(),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 12,
-                        ),
-                        CustomDropDownWithUnderLine(
-                          value: SettingsCubit.get(context)
-                              .doctorSchedule
-                              .result
-                              .fixedDate
-                              .fdClinic
-                              .fdWorkingDays[dayListItemIndex]
-                              .fdWdayDuration2,
-                          onChanged: (String newValue) => SettingsCubit.get(
-                                  context)
-                              .changeSecondShiftExaminationDurationDropdownValue(
-                                  newValue, dayListItemIndex),
-                          items: examinationDurationDropdownItems
-                              .map<DropdownMenuItem<String>>(
-                                  (String value) => DropdownMenuItem<String>(
-                                        value: value,
-                                        child: Text(value + ' minutes'),
-                                      ))
-                              .toList(),
-                        ),
-                        TextButton(
-                            onPressed: () => SettingsCubit.get(context)
-                                .disableSecondShift(dayListItemIndex),
+                ? Column(
+                    children: [
+                      SizedBox(
+                        height: 28.0,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(
-                                  Icons.remove,
-                                  color: kToastError,
+                                OneLineText(
+                                  kExaminationFrom,
+                                  style: Theme.of(context).textTheme.headline5,
                                 ),
-                                SizedBox(width: 8.0),
-                                Text(
-                                  kRemoveShift,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headline5
-                                      .copyWith(color: kToastError),
-                                ),
+                                Spacer(),
+                                InkWell(
+                                  onTap: () {
+                                    {
+                                      onAlertWithCustomContentPressed(context,
+                                          title: 'Choose Time',
+                                          buttons: [
+                                            DialogButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                'Cancel',
+                                                style: TextStyle(
+                                                    color: kAppWhiteColor),
+                                              ),
+                                              color: kToastError,
+                                            ),
+                                            DialogButton(
+                                              onPressed: () {
+                                                SettingsCubit.get(context)
+                                                    .confirmSelectedDate(
+                                                        dayListItemIndex,
+                                                        ShiftType
+                                                            .SecondShiftStart);
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                'Confirm',
+                                                style: TextStyle(
+                                                    color: kAppWhiteColor),
+                                              ),
+                                              color: kToastSuccess,
+                                            ),
+                                          ],
+                                          contentWidget: showDatePickerWidget(
+                                            context,
+                                            250,
+                                            (dateTime) {
+                                              SettingsCubit.get(context)
+                                                  .selectDate(dateTime);
+                                            },
+                                            CupertinoDatePickerMode.time,
+                                          ));
+                                    }
+                                  },
+                                  child: Row(
+                                    children: [
+                                      OneLineText(
+                                        SettingsCubit.get(context)
+                                            .doctorSchedule
+                                            .result
+                                            .fixedDate
+                                            .fdClinic
+                                            .fdWorkingDays[dayListItemIndex]
+                                            .fdWdayFrom2,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline5,
+                                      ),
+                                      SizedBox(
+                                        width: 12.0,
+                                      ),
+                                      SvgPicture.asset(kBlackDownArrowSVG),
+                                    ],
+                                  ),
+                                )
                               ],
-                            ))
-                      ],
-                    ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 44.0,
+                          ),
+                          Expanded(
+                            child: Row(
+                              children: [
+                                OneLineText(
+                                  kExaminationTo,
+                                  style: Theme.of(context).textTheme.headline5,
+                                ),
+                                Spacer(),
+                                InkWell(
+                                  onTap: () {
+                                    {
+                                      onAlertWithCustomContentPressed(context,
+                                          title: 'Choose Time',
+                                          buttons: [
+                                            DialogButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                'Cancel',
+                                                style: TextStyle(
+                                                    color: kAppWhiteColor),
+                                              ),
+                                              color: kToastError,
+                                            ),
+                                            DialogButton(
+                                              onPressed: () {
+                                                SettingsCubit.get(context)
+                                                    .confirmSelectedDate(
+                                                        dayListItemIndex,
+                                                        ShiftType
+                                                            .SecondShiftEnd);
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                'Confirm',
+                                                style: TextStyle(
+                                                    color: kAppWhiteColor),
+                                              ),
+                                              color: kToastSuccess,
+                                            ),
+                                          ],
+                                          contentWidget: showDatePickerWidget(
+                                            context,
+                                            250,
+                                            (dateTime) {
+                                              SettingsCubit.get(context)
+                                                  .selectDate(dateTime);
+                                            },
+                                            CupertinoDatePickerMode.time,
+                                          ));
+                                    }
+                                  },
+                                  child: Row(
+                                    children: [
+                                      OneLineText(
+                                        SettingsCubit.get(context)
+                                            .doctorSchedule
+                                            .result
+                                            .fixedDate
+                                            .fdClinic
+                                            .fdWorkingDays[dayListItemIndex]
+                                            .fdWdayTo2,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline5,
+                                      ),
+                                      SizedBox(
+                                        width: 12.0,
+                                      ),
+                                      SvgPicture.asset(kBlackDownArrowSVG),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 24,
+                      ),
+                      Row(
+                        children: [
+                          OneLineText(
+                            kExaminationDuration,
+                            style: Theme.of(context).textTheme.headline5,
+                          ),
+                          Spacer(),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 12,
+                      ),
+                      CustomDropDownWithUnderLine(
+                        value: SettingsCubit.get(context)
+                            .doctorSchedule
+                            .result
+                            .fixedDate
+                            .fdClinic
+                            .fdWorkingDays[dayListItemIndex]
+                            .fdWdayDuration2,
+                        onChanged: (String newValue) => SettingsCubit.get(
+                                context)
+                            .changeSecondShiftExaminationDurationDropdownValue(
+                                newValue, dayListItemIndex),
+                        items: examinationDurationDropdownItems
+                            .map<DropdownMenuItem<String>>(
+                                (String value) => DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value + ' minutes'),
+                                    ))
+                            .toList(),
+                      ),
+                      TextButton(
+                          onPressed: () => SettingsCubit.get(context)
+                              .disableSecondShift(dayListItemIndex),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.remove,
+                                color: kToastError,
+                              ),
+                              SizedBox(width: 8.0),
+                              Text(
+                                kRemoveShift,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline5
+                                    .copyWith(color: kToastError),
+                              ),
+                            ],
+                          ))
+                    ],
                   )
                 : Container(),
           ],

@@ -62,7 +62,5 @@ const List<String> examinationDurationDropdownItems = [
   '120',
 ];
 
-const double kOneShiftItemHeight = 204.0;
-
 const String kAccessKey = 'access_key';
 const String kAccessPassword = 'access_password';
