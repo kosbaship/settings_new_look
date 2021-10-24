@@ -40,9 +40,9 @@ class CallTabVoiceFees extends StatelessWidget {
                   width: 200,
                   child: CustomTextFormField(
                     controller: SettingsCubit.get(context).callPriceController,
-                    hintText: 'Examination price (EGP)',
+                    hintText: 'Voice call price (EGP)',
                     validator: (String value) => value.isEmpty
-                        ? 'please write your examination price'
+                        ? 'please write your Voice call price'
                         : null,
                   ),
                 ),
@@ -56,5 +56,88 @@ class CallTabVoiceFees extends StatelessWidget {
             height: 20.0,
           ),
         ],
+      );
+}
+
+class CallTabVideoFees extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => Column(
+        children: [
+          SizedBox(
+            height: 8.0,
+          ),
+          Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12.0),
+                border: Border.all(color: kAppBorderColor)),
+            child: ExpansionTile(
+              initiallyExpanded: int.tryParse(SettingsCubit.get(context)
+                              .doctorSchedule
+                              .result
+                              .fixedDate
+                              .fdCall
+                              .fdActiveVideo) ==
+                          1 &&
+                      int.tryParse(SettingsCubit.get(context)
+                              .doctorSchedule
+                              .result
+                              .fixedDate
+                              .fdCall
+                              .fdActiveVideo) !=
+                          null
+                  ? true
+                  : false,
+              title: Row(
+                children: [
+                  Text(
+                    kAllowVideoCalls,
+                    style: Theme.of(context).textTheme.headline5.copyWith(
+                          fontSize: 16.0,
+                        ),
+                  ),
+                ],
+              ),
+              trailing: int.tryParse(SettingsCubit.get(context)
+                          .doctorSchedule
+                          .result
+                          .fixedDate
+                          .fdCall
+                          .fdActiveVideo) ==
+                      1
+                  ? SvgPicture.asset(kActiveCupertinoSwitchSVG)
+                  : SvgPicture.asset(kUnActiveCupertinoSwitchSVG),
+              children: <Widget>[_buildCallVideoPriceBody(context)],
+              onExpansionChanged: (bool expanded) =>
+                  SettingsCubit.get(context).videoCallActivate(expanded),
+            ),
+          ),
+        ],
+      );
+
+  Widget _buildCallVideoPriceBody(context) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          children: [
+            Container(
+              width: double.infinity,
+              padding:
+                  const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+              child: Column(
+                children: [
+                  CustomTextFormField(
+                    controller: SettingsCubit.get(context).videoPriceController,
+                    hintText: 'Video call price (EGP)',
+                    validator: (String value) => value.isEmpty
+                        ? 'please write your Video call price'
+                        : null,
+                  ),
+                  const SizedBox(
+                    height: 8.0,
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
       );
 }

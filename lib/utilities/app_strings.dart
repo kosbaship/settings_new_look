@@ -32,7 +32,8 @@ const String kExaminationDuration = 'Examination duration';
 const String kExaminationFrom = 'From';
 const String kExaminationTo = 'To';
 const String kDemoTimePM = '6.00 PM';
-const String kDemoTimeAM = '11.00 AM';
+const String kAllowVideoCalls = 'Allow video calls';
+const String kAllowSpotCalls = 'Allow spot calls';
 
 const List<String> kConfirmationScheduleDropdownItems = [
   'Permanent',

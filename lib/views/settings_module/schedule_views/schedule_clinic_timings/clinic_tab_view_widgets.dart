@@ -365,7 +365,7 @@ class ClinicTabFixedDatesWorkTime extends StatelessWidget {
                         ? SvgPicture.asset(kActiveCupertinoSwitchSVG)
                         : SvgPicture.asset(kUnActiveCupertinoSwitchSVG),
                     children: <Widget>[
-                      buildFixedDatesWorkTimeDayListItemBody(
+                      _buildFixedDatesWorkTimeDayListItemBody(
                           context, dayListItemIndex)
                     ],
                     onExpansionChanged: (bool expanded) =>
@@ -380,7 +380,7 @@ class ClinicTabFixedDatesWorkTime extends StatelessWidget {
         ],
       );
 
-  Widget buildFixedDatesWorkTimeDayListItemBody(context, dayListItemIndex) =>
+  Widget _buildFixedDatesWorkTimeDayListItemBody(context, dayListItemIndex) =>
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(

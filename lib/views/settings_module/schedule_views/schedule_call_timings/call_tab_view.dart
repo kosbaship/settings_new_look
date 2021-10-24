@@ -12,11 +12,7 @@ class CallTimings extends StatelessWidget {
           child: Column(
             children: [
               CallTabVoiceFees(),
-              Container(
-                color: Colors.red,
-                width: double.infinity,
-                height: 200,
-              ),
+              CallTabVideoFees(),
               Container(
                 color: Colors.green,
                 width: double.infinity,

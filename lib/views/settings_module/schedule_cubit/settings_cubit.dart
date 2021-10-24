@@ -269,6 +269,13 @@ class SettingsCubit extends Cubit<SettingsStates> {
 
   /// ================= handle Call Timings ========================
   TextEditingController callPriceController = TextEditingController();
+  TextEditingController videoPriceController = TextEditingController();
+
+  videoCallActivate(bool expandedTilesValue) {
+    this._doctorSchedule.result.fixedDate.fdCall.fdActiveVideo =
+        expandedTilesValue ? 1.toString() : 0.toString();
+    emit(SettingsChangeExpandedTilesValueState());
+  }
 
   /// ========= get data from the server =======================
   DoctorScheduleData _doctorSchedule;
@@ -308,6 +315,16 @@ class SettingsCubit extends Cubit<SettingsStates> {
               .fixedDate
               .fdCall
               .fdPriceVoice
+              .toString() ??
+          '0';
+
+      /// Call => video
+      this.videoPriceController.text = this
+              ._doctorSchedule
+              .result
+              .fixedDate
+              .fdCall
+              .fdPriceVideo
               .toString() ??
           '0';
 
