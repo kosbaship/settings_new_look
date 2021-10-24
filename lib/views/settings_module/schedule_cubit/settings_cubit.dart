@@ -24,15 +24,6 @@ class SettingsCubit extends Cubit<SettingsStates> {
     emit(SettingsChangeExaminationTypeState());
   }
 
-  changeConfirmationScheduleValue(confirmationScheduleValue) {
-    print('====================');
-    print('$confirmationScheduleValue');
-    print('====================');
-    this._doctorSchedule.result.fixedDate.fdClinic.fdConfirmSchedule =
-        confirmationScheduleValue;
-    emit(SettingsConfirmationScheduleTypeState());
-  }
-
   final formKey = GlobalKey<FormState>();
   _checkExaminationPriceTextFieldValidation() =>
       this.formKey.currentState.validate();
@@ -43,6 +34,13 @@ class SettingsCubit extends Cubit<SettingsStates> {
   }
 
   /// ================= handle fixed dates ========================
+
+  changeFixedDatesConfirmationScheduleValue(confirmationScheduleValue) {
+    this._doctorSchedule.result.fixedDate.fdClinic.fdConfirmSchedule =
+        confirmationScheduleValue;
+    emit(SettingsConfirmationScheduleTypeState());
+  }
+
   TextEditingController fixedDatesExaminationPriceController =
       TextEditingController();
 
@@ -154,6 +152,12 @@ class SettingsCubit extends Cubit<SettingsStates> {
   }
 
   /// ================= handle first in first out ========================
+  changeFirstInFirstOutConfirmationScheduleValue(confirmationScheduleValue) {
+    this._doctorSchedule.result.firstInFirstOut.fnClinic.fnConfirmSchedule =
+        confirmationScheduleValue;
+    emit(SettingsConfirmationScheduleTypeState());
+  }
+
   TextEditingController firstInFirstOutExaminationPriceController =
       TextEditingController();
   DateTime firstInFirstOutFullDatTime = DateTime.now();

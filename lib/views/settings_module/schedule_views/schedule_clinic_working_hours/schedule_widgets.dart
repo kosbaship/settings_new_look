@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_conditional_rendering/conditional.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:settings_new_look/utilities/app_colors.dart';
@@ -163,27 +164,58 @@ class ClinicTabView extends StatelessWidget {
               SizedBox(
                 width: 8.0,
               ),
-              CustomDropDownWithoutUnderline(
-                value: SettingsCubit.get(context)
-                    .doctorSchedule
-                    .result
-                    .fixedDate
-                    .fdClinic
-                    .fdConfirmSchedule,
-                onChanged: (String newValue) => SettingsCubit.get(context)
-                    .changeConfirmationScheduleValue(newValue),
-                items: kConfirmationScheduleDropdownItems
-                    .map<DropdownMenuItem<String>>(
-                      (String value) => DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      ),
-                    )
-                    .toList(),
+              Conditional.single(
+                context: context,
+                conditionBuilder: (context) =>
+                    SettingsCubit.get(context).examinationDropdownValue ==
+                    kExaminationDropdownInitialValue,
+                widgetBuilder: (context) =>
+                    _buildFixedDatesConfirmationSchedule(context),
+                fallbackBuilder: (context) =>
+                    _buildFirstInFirstOutConfirmationSchedule(context),
               ),
             ],
           ),
         ],
+      );
+
+  Widget _buildFixedDatesConfirmationSchedule(context) =>
+      CustomDropDownWithoutUnderline(
+        value: SettingsCubit.get(context)
+            .doctorSchedule
+            .result
+            .fixedDate
+            .fdClinic
+            .fdConfirmSchedule,
+        onChanged: (String newValue) => SettingsCubit.get(context)
+            .changeFixedDatesConfirmationScheduleValue(newValue),
+        items: kConfirmationScheduleDropdownItems
+            .map<DropdownMenuItem<String>>(
+              (String value) => DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              ),
+            )
+            .toList(),
+      );
+  Widget _buildFirstInFirstOutConfirmationSchedule(context) =>
+      CustomDropDownWithoutUnderline(
+        value: SettingsCubit.get(context)
+            .doctorSchedule
+            .result
+            .firstInFirstOut
+            .fnClinic
+            .fnConfirmSchedule,
+        onChanged: (String newValue) => SettingsCubit.get(context)
+            .changeFirstInFirstOutConfirmationScheduleValue(newValue),
+        items: kConfirmationScheduleDropdownItems
+            .map<DropdownMenuItem<String>>(
+              (String value) => DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              ),
+            )
+            .toList(),
       );
 }
 
