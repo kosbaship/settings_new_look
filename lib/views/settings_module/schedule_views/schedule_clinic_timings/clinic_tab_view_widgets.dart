@@ -24,8 +24,8 @@ AppBar buildAppBarView(BuildContext context) => AppBar(
         TextButton(
           onPressed: () async {
             // await ApiHelper.getInstance.getDoctorSettingsData();
-            SettingsCubit.get(context).getScheduleDoctor();
-            //  SettingsCubit.get(context).saveAllTheSettings();
+            // SettingsCubit.get(context).getScheduleDoctor();
+            SettingsCubit.get(context).saveAllTheSettings();
           },
           child: OneLineText(
             kSave.toUpperCase(),
@@ -117,7 +117,7 @@ class ClinicTabBar extends StatelessWidget {
       );
 }
 
-class ClinicTabView extends StatelessWidget {
+class ClinicTabSelection extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Column(
         children: [

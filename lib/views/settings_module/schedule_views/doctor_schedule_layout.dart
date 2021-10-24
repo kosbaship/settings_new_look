@@ -6,8 +6,9 @@ import 'package:settings_new_look/utilities/app_colors.dart';
 import 'package:settings_new_look/utilities/app_components.dart';
 import 'package:settings_new_look/views/settings_module/schedule_cubit/settings_cubit.dart';
 import 'package:settings_new_look/views/settings_module/schedule_cubit/settings_states.dart';
-import 'package:settings_new_look/views/settings_module/schedule_views/schedule_clinic_working_hours/clinic_tab_view.dart';
-import 'package:settings_new_look/views/settings_module/schedule_views/schedule_clinic_working_hours/schedule_widgets.dart';
+import 'package:settings_new_look/views/settings_module/schedule_views/schedule_call_timings/call_tab_view.dart';
+import 'package:settings_new_look/views/settings_module/schedule_views/schedule_clinic_timings/clinic_tab_view.dart';
+import 'package:settings_new_look/views/settings_module/schedule_views/schedule_clinic_timings/clinic_tab_view_widgets.dart';
 
 class ScheduleScreen extends StatelessWidget {
   @override
@@ -46,16 +47,15 @@ class ScheduleScreen extends StatelessWidget {
           children: [
             ClinicTabBar(),
             Expanded(
-              child: TabBarView(
-                physics: NeverScrollableScrollPhysics(),
-                children: [
-                  ClinicTimings(),
-                  Icon(
-                    Icons.directions_bike,
-                    color: Colors.red,
-                    size: 45,
-                  ),
-                ],
+              child: Form(
+                key: SettingsCubit.get(context).formKey,
+                child: TabBarView(
+                  physics: NeverScrollableScrollPhysics(),
+                  children: [
+                    ClinicTimings(),
+                    CallTimings(),
+                  ],
+                ),
               ),
             ),
           ],
