@@ -284,6 +284,79 @@ class SettingsCubit extends Cubit<SettingsStates> {
     emit(SettingsChangeExpandedTilesValueState());
   }
 
+  DateTime callsTimeFullDatTime = DateTime.now();
+  callsTimeConfirmSelectedDate(dayListItemIndex, ShiftType shiftType) {
+    switch (shiftType) {
+      case ShiftType.FirstShiftStart:
+        this
+                ._doctorSchedule
+                .result
+                .fixedDate
+                .fdCall
+                .fdWorkingDays[dayListItemIndex]
+                .fdWdayFrom =
+            '${callsTimeFullDatTime.hour}:${callsTimeFullDatTime.minute}';
+        break;
+      case ShiftType.FirstShiftEnd:
+        this
+                ._doctorSchedule
+                .result
+                .fixedDate
+                .fdCall
+                .fdWorkingDays[dayListItemIndex]
+                .fdWdayTo =
+            '${callsTimeFullDatTime.hour}:${callsTimeFullDatTime.minute}';
+        break;
+      case ShiftType.SecondShiftStart:
+        this
+                ._doctorSchedule
+                .result
+                .fixedDate
+                .fdCall
+                .fdWorkingDays[dayListItemIndex]
+                .fdWdayFrom2 =
+            '${callsTimeFullDatTime.hour}:${callsTimeFullDatTime.minute}';
+        break;
+      case ShiftType.SecondShiftEnd:
+        this
+                ._doctorSchedule
+                .result
+                .fixedDate
+                .fdCall
+                .fdWorkingDays[dayListItemIndex]
+                .fdWdayTo2 =
+            '${callsTimeFullDatTime.hour}:${callsTimeFullDatTime.minute}';
+        break;
+      default:
+        break;
+    }
+
+    emit(SettingsConfirmSelectedDateState());
+  }
+
+  callsTimeDatesFirstShiftExaminationDurationDropdownValue(
+      examinationDurationDropdownValue, dayListItemIndex) {
+    this
+        ._doctorSchedule
+        .result
+        .fixedDate
+        .fdCall
+        .fdWorkingDays[dayListItemIndex]
+        .fdWdayDuration = examinationDurationDropdownValue;
+    emit(SettingsChangeExaminationDurationState());
+  }
+
+  callsTimeActivateDay(bool expandedTilesValue, index) {
+    this
+        ._doctorSchedule
+        .result
+        .fixedDate
+        .fdCall
+        .fdWorkingDays[index]
+        .fdWdayActiveDay = expandedTilesValue ? 1.toString() : 0.toString();
+    emit(SettingsChangeExpandedTilesValueState());
+  }
+
   /// ========= get data from the server =======================
   DoctorScheduleData _doctorSchedule;
   getScheduleDoctor() {

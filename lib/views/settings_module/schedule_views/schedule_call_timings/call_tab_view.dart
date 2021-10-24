@@ -14,11 +14,7 @@ class CallTimings extends StatelessWidget {
               CallTabVoiceFees(),
               CallTabVideoFees(),
               CallTabSpotFees(),
-              Container(
-                color: Colors.green,
-                width: double.infinity,
-                height: 200,
-              ),
+              CallTabCallsTime()
             ],
           ),
         ),

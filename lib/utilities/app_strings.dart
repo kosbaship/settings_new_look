@@ -35,6 +35,8 @@ const String kDemoTimePM = '6.00 PM';
 const String kAllowVideoCalls = 'Allow video calls';
 const String kAllowSpotCalls = 'Allow spot calls';
 
+const String kCallsTime = 'Calls Time';
+
 const List<String> kConfirmationScheduleDropdownItems = [
   'Permanent',
   'Week',
@@ -48,6 +50,7 @@ const String kActivePhoneSVG = 'assets/blue_phone.svg';
 const String kUnActivePhoneSVG = 'assets/grey_phone.svg';
 const String kBlackDownArrowSVG = 'assets/black_down_arrow.svg';
 const String kFeesSVG = 'assets/fees.svg';
+const String kCalenderSVG = 'assets/fees.svg';
 
 const String kActiveCupertinoSwitchSVG = 'assets/active_cupertino_switch.svg';
 const String kUnActiveCupertinoSwitchSVG =
