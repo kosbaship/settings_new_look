@@ -11,6 +11,16 @@ class DoctorScheduleData {
     result =
         json['result'] != null ? new Result.fromJson(json['result']) : null;
   }
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['status'] = this.status;
+    data['sub_message'] = this.subMessage;
+    data['message'] = this.message;
+    if (this.result != null) {
+      data['result'] = this.result.toJson();
+    }
+    return data;
+  }
 }
 
 class Result {
@@ -25,6 +35,17 @@ class Result {
         ? new FirstInFirstOut.fromJson(json['first_in_first_out'])
         : null;
   }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.fixedDate != null) {
+      data['fixed_date'] = this.fixedDate.toJson();
+    }
+    if (this.firstInFirstOut != null) {
+      data['first_in_first_out'] = this.firstInFirstOut.toJson();
+    }
+    return data;
+  }
 }
 
 class FixedDate {
@@ -37,6 +58,16 @@ class FixedDate {
         : null;
     fdCall =
         json['fd_call'] != null ? new FdCall.fromJson(json['fd_call']) : null;
+  }
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.fdClinic != null) {
+      data['fd_clinic'] = this.fdClinic.toJson();
+    }
+    if (this.fdCall != null) {
+      data['fd_call'] = this.fdCall.toJson();
+    }
+    return data;
   }
 }
 
@@ -56,6 +87,18 @@ class FdClinic {
         fdWorkingDays.add(new FdWorkingDays.fromJson(v));
       });
     }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['fd_vendorAppointType'] = this.fdVendorAppointType;
+    data['fd_confirm_schedule'] = this.fdConfirmSchedule;
+    data['fd_priceValue'] = this.fdPriceValue;
+    if (this.fdWorkingDays != null) {
+      data['fd_working_days'] =
+          this.fdWorkingDays.map((v) => v.toJson()).toList();
+    }
+    return data;
   }
 }
 
@@ -80,6 +123,20 @@ class FdWorkingDays {
     fdWdayDuration2 = json['fd_wday_duration2'];
     fdWdayActiveDay = json['fd_wday_active_day'];
     fdWdayActiveShift = json['fd_wday_active_shift'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['fd_wday_day_name'] = this.fdWdayDayName;
+    data['fd_wday_from'] = this.fdWdayFrom;
+    data['fd_wday_to'] = this.fdWdayTo;
+    data['fd_wday_from_2'] = this.fdWdayFrom2;
+    data['fd_wday_to_2'] = this.fdWdayTo2;
+    data['fd_wday_duration'] = this.fdWdayDuration;
+    data['fd_wday_duration2'] = this.fdWdayDuration2;
+    data['fd_wday_active_day'] = this.fdWdayActiveDay;
+    data['fd_wday_active_shift'] = this.fdWdayActiveShift;
+    return data;
   }
 }
 
@@ -110,6 +167,21 @@ class FdCall {
       });
     }
   }
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['fd_vendorAppointType'] = this.fdVendorAppointType;
+    data['fd_priceVideo'] = this.fdPriceVideo;
+    data['fd_activeVideo'] = this.fdActiveVideo;
+    data['fd_priceVoice'] = this.fdPriceVoice;
+    data['fd_activeVoice'] = this.fdActiveVoice;
+    data['fd_priceSpot'] = this.fdPriceSpot;
+    data['fd_activeSpot'] = this.fdActiveSpot;
+    if (this.fdWorkingDays != null) {
+      data['fd_working_days'] =
+          this.fdWorkingDays.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
 }
 
 class FirstInFirstOut {
@@ -119,6 +191,13 @@ class FirstInFirstOut {
     fnClinic = json['fn_clinic'] != null
         ? new FnClinic.fromJson(json['fn_clinic'])
         : null;
+  }
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.fnClinic != null) {
+      data['fn_clinic'] = this.fnClinic.toJson();
+    }
+    return data;
   }
 }
 
@@ -138,6 +217,17 @@ class FnClinic {
         fnWorkingDays.add(new FnWorkingDays.fromJson(v));
       });
     }
+  }
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['fn_vendorAppointType'] = this.fnVendorAppointType;
+    data['fn_confirm_schedule'] = this.fnConfirmSchedule;
+    data['fn_priceValue'] = this.fnPriceValue;
+    if (this.fnWorkingDays != null) {
+      data['fn_working_days'] =
+          this.fnWorkingDays.map((v) => v.toJson()).toList();
+    }
+    return data;
   }
 }
 
@@ -162,5 +252,19 @@ class FnWorkingDays {
     fnWdayDuration2 = json['fn_wday_duration2'];
     fnWdayActiveDay = json['fn_wday_active_day'];
     fnWdayActiveShift = json['fn_wday_active_shift'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['fn_wday_day_name'] = this.fnWdayDayName;
+    data['fn_wday_from'] = this.fnWdayFrom;
+    data['fn_wday_to'] = this.fnWdayTo;
+    data['fn_wday_duration'] = this.fnWdayDuration;
+    data['fn_wday_from_2'] = this.fnWdayFrom2;
+    data['fn_wday_to_2'] = this.fnWdayTo2;
+    data['fn_wday_duration2'] = this.fnWdayDuration2;
+    data['fn_wday_active_day'] = this.fnWdayActiveDay;
+    data['fn_wday_active_shift'] = this.fnWdayActiveShift;
+    return data;
   }
 }
