@@ -112,6 +112,7 @@ class FdWorkingDays {
   String fdWdayDuration2;
   String fdWdayActiveDay;
   String fdWdayActiveShift;
+  String fdWdayExaminationType;
 
   FdWorkingDays.fromJson(Map<String, dynamic> json) {
     fdWdayDayName = json['fd_wday_day_name'];
@@ -123,6 +124,7 @@ class FdWorkingDays {
     fdWdayDuration2 = json['fd_wday_duration2'];
     fdWdayActiveDay = json['fd_wday_active_day'];
     fdWdayActiveShift = json['fd_wday_active_shift'];
+    fdWdayExaminationType = json['fd_wday_examination_type'];
   }
 
   Map<String, dynamic> toJson() {
@@ -136,6 +138,7 @@ class FdWorkingDays {
     data['fd_wday_duration2'] = this.fdWdayDuration2;
     data['fd_wday_active_day'] = this.fdWdayActiveDay;
     data['fd_wday_active_shift'] = this.fdWdayActiveShift;
+    data['fd_wday_examination_type'] = this.fdWdayExaminationType;
     return data;
   }
 }
@@ -241,6 +244,7 @@ class FnWorkingDays {
   String fnWdayDuration2;
   String fnWdayActiveDay;
   String fnWdayActiveShift;
+  String fnWdayExaminationType;
 
   FnWorkingDays.fromJson(Map<String, dynamic> json) {
     fnWdayDayName = json['fn_wday_day_name'];
@@ -252,6 +256,7 @@ class FnWorkingDays {
     fnWdayDuration2 = json['fn_wday_duration2'];
     fnWdayActiveDay = json['fn_wday_active_day'];
     fnWdayActiveShift = json['fn_wday_active_shift'];
+    fnWdayExaminationType = json['fn_wday_examination_type'];
   }
 
   Map<String, dynamic> toJson() {
@@ -265,6 +270,7 @@ class FnWorkingDays {
     data['fn_wday_duration2'] = this.fnWdayDuration2;
     data['fn_wday_active_day'] = this.fnWdayActiveDay;
     data['fn_wday_active_shift'] = this.fnWdayActiveShift;
+    data['fn_wday_examination_type'] = this.fnWdayExaminationType;
     return data;
   }
 }
