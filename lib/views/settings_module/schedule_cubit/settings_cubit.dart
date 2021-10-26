@@ -376,9 +376,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
   DoctorScheduleData _doctorSchedule;
   getScheduleDoctor() {
     emit(SettingsLoadingDataInProgressState());
-    ApiHelper.getInstance
-        .getScheduleDoctorFixed()
-        .then((_scheduleDoctorFixedModel) {
+    ApiHelper.getInstance.getDoctorSchedule().then((_scheduleDoctorFixedModel) {
       this._doctorSchedule = _scheduleDoctorFixedModel;
 
       /// Clinic => Fixed Dates
