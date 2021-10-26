@@ -13,18 +13,21 @@ class SettingsCubit extends Cubit<SettingsStates> {
 
   /// =================== handle tab bar and selection ========================
   int tabBarIndex = 0;
+
   changeTabBarIndex(index) {
     this.tabBarIndex = index;
     emit(SettingsChangeTabBarIndexState());
   }
 
   String examinationDropdownValue = kExaminationDropdownInitialValue;
+
   changeExaminationDropdownValue(examinationDropdownValue) {
     this.examinationDropdownValue = examinationDropdownValue;
     emit(SettingsChangeExaminationTypeState());
   }
 
   final formKey = GlobalKey<FormState>();
+
   _checkExaminationPriceTextFieldValidation() =>
       this.formKey.currentState.validate();
 
@@ -40,6 +43,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
       TextEditingController();
 
   DateTime fixedDateFullDatTime = DateTime.now();
+
   fixedDateConfirmSelectedDate(dayListItemIndex, ShiftType shiftType) {
     switch (shiftType) {
       case ShiftType.FirstShiftStart:
@@ -162,6 +166,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
   TextEditingController firstInFirstOutExaminationPriceController =
       TextEditingController();
   DateTime firstInFirstOutFullDatTime = DateTime.now();
+
   firstInFirstOutConfirmSelectedDate(dayListItemIndex, ShiftType shiftType) {
     switch (shiftType) {
       case ShiftType.FirstShiftStart:
@@ -294,6 +299,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
   }
 
   DateTime callsTimeFullDatTime = DateTime.now();
+
   callsTimeConfirmSelectedDate(dayListItemIndex, ShiftType shiftType) {
     switch (shiftType) {
       case ShiftType.FirstShiftStart:
@@ -374,10 +380,11 @@ class SettingsCubit extends Cubit<SettingsStates> {
 
   /// ========= get data from the server =======================
   DoctorScheduleData _doctorSchedule;
+
   getScheduleDoctor() {
     emit(SettingsLoadingDataInProgressState());
-    ApiHelper.getInstance.getDoctorSchedule().then((_scheduleDoctorFixedModel) {
-      this._doctorSchedule = _scheduleDoctorFixedModel;
+    ApiHelper.getInstance.getDoctorSchedule().then((_doctorScheduleModel) {
+      this._doctorSchedule = _doctorScheduleModel;
 
       /// Clinic => Fixed Dates
       //Examination Price
@@ -432,12 +439,23 @@ class SettingsCubit extends Cubit<SettingsStates> {
     });
   }
 
+  setScheduleDoctor() {
+    emit(SettingsLoadingDataInProgressState());
+    ApiHelper.getInstance.updateDoctorSchedule(_doctorSchedule).then((_) {
+      print('SettingsLoadingDataInProgressState');
+      print('SettingsLoadingDataInProgressState');
+      print('SettingsLoadingDataInProgressState');
+      print('SettingsLoadingDataInProgressState');
+      emit(SettingsLoadingDataSuccessState());
+    }).onError((errorMessage, stackTrace) {
+      emit(SettingsErrorLoadingDataState(errorMessage.toString()));
+    });
+  }
+
   DoctorScheduleData get doctorSchedule => _doctorSchedule;
 
   /// ======================================================
   saveAllTheSettings() {
-    if (this._checkExaminationPriceTextFieldValidation()) {
-      print('Saving Data and show loading Bar');
-    }
+    if (this._checkExaminationPriceTextFieldValidation()) setScheduleDoctor();
   }
 }
